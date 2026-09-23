@@ -147,6 +147,45 @@ Each is fixed and regression-tested.
 
 ---
 
+## Using it
+
+```bash
+evaldrift table                    # resolution of every benchmark people quote
+evaldrift resolution 198           # what a 198-item benchmark can detect
+evaldrift check 0.02 198           # is a 2-point claim supportable? (exit 1 if not)
+```
+
+`check` exits non-zero when a claim exceeds what the benchmark can resolve, so
+it works as a CI gate: a build can fail when someone reports an improvement
+their evaluation cannot distinguish from noise.
+
+## The case against this analysis
+
+**[docs/against.md](docs/against.md)** argues, as strongly as I can, that this
+should not change how anyone evaluates models.
+
+The objection I cannot dispose of: this treats a benchmark score as an estimate
+of a population parameter. If a benchmark is instead a **fixed tripwire** — not
+a sample of coding ability but the specific suite your product must pass — then
+sampling uncertainty is the wrong lens and the headline is a category error.
+The finding applies exactly insofar as teams generalise from benchmark scores,
+and the public evidence that they do is abundant but is inference, not
+measurement.
+
+Two others worth reading first: benchmark items are **not independent**, so the
+true intervals are wider than reported and the specific numbers in the table are
+not quite right; and the **noise floor has not been measured at scale**, so
+every paired-test figure is conditional on an assumed discordance rather than an
+observed one.
+
+## How the data constrained the design
+
+**[docs/data-reachability.md](docs/data-reachability.md)** — every source was
+probed from CI before any code was written, and the results are committed. The
+per-item corpora that would have been convenient are gated; their absence made
+the headline finding stronger, because it now rests on published split sizes
+alone and cannot be contested on the grounds that the wrong model was measured.
+
 ## Reproducing
 
 ```bash

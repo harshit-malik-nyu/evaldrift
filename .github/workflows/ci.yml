@@ -30,4 +30,4 @@ jobs:
       - run: pip install -e ".[dev]" mypy pyflakes
       - run: python -m pyflakes src/evaldrift tests
       - run: python -m mypy src/evaldrift --ignore-missing-imports
-      - run: pytest -q --cov=evaldrift --cov-report=term --cov-fail-under=90
+      - run: pytest -q --cov=evaldrift --cov-report=term --cov-fail-under=95

@@ -14,6 +14,9 @@ dependencies = []
 [project.optional-dependencies]
 dev = ["pytest>=7.4", "pytest-cov>=4.0"]
 
+[project.scripts]
+evaldrift = "evaldrift.cli:main"
+
 [tool.setuptools.packages.find]
 where = ["src"]
 
