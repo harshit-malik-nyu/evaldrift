@@ -1,0 +1,64 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>evaldrift — can you tell when a model got worse?</title><style>:root{--bg:#fbfbfa;--fg:#1a1a19;--mut:#6b6b68;--line:#e2e2df;--card:#fff;--bad:#b3261e;--accent:#1a4d8f}
+@media(prefers-color-scheme:dark){:root{--bg:#141413;--fg:#f0efea;--mut:#9a9a94;--line:#2c2c29;--card:#1c1c1a;--bad:#ff6b5e;--accent:#6fa8dc}}
+*{box-sizing:border-box}body{margin:0;padding:2.5rem 1.25rem 4rem;background:var(--bg);color:var(--fg);font:16px/1.65 ui-sans-serif,-apple-system,"Segoe UI",system-ui,sans-serif}
+.w{max-width:50rem;margin:0 auto}.eb{font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mut)}
+h1{font-size:1.95rem;line-height:1.2;margin:.3rem 0 .5rem;letter-spacing:-.02em}
+h2{font-size:.8rem;text-transform:uppercase;letter-spacing:.08em;color:var(--mut);margin:2.4rem 0 .8rem}
+.lead{font-size:1.1rem;color:var(--mut);margin-bottom:1.8rem}
+.hero{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:10px;padding:1.3rem 1.4rem}
+.big{font-size:2.5rem;font-weight:650;letter-spacing:-.03em;color:var(--bad);line-height:1}
+table{width:100%;border-collapse:collapse;font-size:.9rem;margin:.4rem 0 1rem}
+th,td{text-align:left;padding:.5rem .6rem;border-bottom:1px solid var(--line)}
+th{font-size:.7rem;text-transform:uppercase;letter-spacing:.06em;color:var(--mut)}
+td.n{text-align:right;font-variant-numeric:tabular-nums}td.c{text-align:center}td.bad{color:var(--bad);font-weight:600}
+.note{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:1rem 1.1rem;font-size:.9rem;color:var(--mut)}
+.note b{color:var(--fg)}footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--line);color:var(--mut);font-size:.82rem}a{color:inherit}</style></head><body><div class="w">
+<div class="eb">evaldrift</div><h1>Can you tell when a model got worse?</h1>
+<div class="lead">Mostly, no — and the reason is arithmetic, not tooling.</div>
+<div class="hero"><div class="big">6 of 9</div>
+<p style="margin:.6rem 0 0">widely quoted benchmarks <b>cannot distinguish a two-point change from noise</b>
+— assuming items are independent. They are not. Correct for that and <b>none can</b>.</p></div>
+
+<h2>Resolution, assuming independence</h2>
+<table><tr><th>Benchmark</th><th class="n">Items</th><th class="n">Smallest detectable</th><th class="c">2-pt</th><th class="n">Items needed</th></tr><tr><td class=''>HumanEval</td><td class='n'>164</td><td class='n bad'>9.3%</td><td class='c'>✗</td><td class='n'>3,532</td></tr><tr><td class=''>GPQA Diamond</td><td class='n'>198</td><td class='n bad'>12.9%</td><td class='c'>✗</td><td class='n'>8,242</td></tr><tr><td class=''>TruthfulQA</td><td class='n'>817</td><td class='n bad'>6.4%</td><td class='c'>✗</td><td class='n'>8,242</td></tr><tr><td class=''>ARC-Challenge</td><td class='n'>1,172</td><td class='n bad'>2.5%</td><td class='c'>✗</td><td class='n'>1,865</td></tr><tr><td class=''>GSM8K</td><td class='n'>1,319</td><td class='n bad'>2.4%</td><td class='c'>✗</td><td class='n'>1,865</td></tr><tr><td class=''>MATH</td><td class='n'>5,000</td><td class='n bad'>2.2%</td><td class='c'>✗</td><td class='n'>6,280</td></tr><tr><td class=''>HellaSwag</td><td class='n'>10,042</td><td class='n'>0.9%</td><td class='c'>✓</td><td class='n'>1,865</td></tr><tr><td class=''>MMLU-Pro</td><td class='n'>12,032</td><td class='n'>1.6%</td><td class='c'>✓</td><td class='n'>7,359</td></tr><tr><td class=''>MMLU</td><td class='n'>14,042</td><td class='n'>1.1%</td><td class='c'>✓</td><td class='n'>4,145</td></tr></table>
+<div class="note"><b>GPQA Diamond</b> appears in nearly every frontier announcement. At 198 items it cannot
+resolve under 13%; a two-point claim needs 8,242 items —
+<b>42× its size</b>.</div>
+
+<h2>Items are clustered, and it collapses the sample</h2>
+<table><tr><th>Benchmark</th><th class="n">Items</th><th class="n">Clusters</th><th class="n">Per cluster</th><th class="n">Fails at</th></tr><tr><td class=''>MMLU</td><td class='n'>14,042</td><td class='n'>57</td><td class='n'>246</td><td class='n bad'>ICC 0.003</td></tr><tr><td class=''>MMLU-Pro</td><td class='n'>12,032</td><td class='n'>14</td><td class='n'>859</td><td class='n bad'>ICC 0.001</td></tr><tr><td class=''>MATH</td><td class='n'>5,000</td><td class='n'>7</td><td class='n'>714</td><td class='n bad'>never held</td></tr><tr><td class=''>GPQA Diamond</td><td class='n'>198</td><td class='n'>3</td><td class='n'>66</td><td class='n bad'>never held</td></tr><tr><td class=''>TruthfulQA</td><td class='n'>817</td><td class='n'>38</td><td class='n'>22</td><td class='n bad'>never held</td></tr></table>
+<div class="note">Estimated from published per-subject accuracies with sampling noise subtracted:
+<b>ICC 0.149</b> (Qwen2.5 7B) and <b>0.097</b> (Qwen1 7B) — around
+<b>50× MMLU's flip point</b>.<br><br>
+MMLU's 14,042 items behave like <b>373</b> independent ones, resolving
+<b>9%</b> rather than 1.4%.<br><br>
+Four subjects of one model is a small basis. It settles the question anyway because the threshold is
+fifty times smaller.</div>
+
+<h2>The floor is published — by the benchmark authors</h2>
+<table><tr><th>Benchmark</th><th class="n">Prompt variance</th><th class="n">Peak</th></tr><tr><td class=''>MMLU</td><td class='n bad'>4.5%</td><td class='n'>10.98%</td></tr><tr><td class=''>MMLU-Pro</td><td class='n bad'>2.0%</td><td class='n'>3.74%</td></tr></table>
+<div class="note">Wang et al. ran <b>24 different reasonable prompts</b> with model and items fixed. Frontier
+models cluster within <b>2–4%</b> of each other — so on MMLU the measurement error is
+<b>larger than the differences being measured</b> (signal/noise 0.67;
+MMLU-Pro reaches 1.50).<br><br>
+<b>This variance does not shrink with more items.</b> Sampling error falls as one over root n; prompt
+sensitivity does not fall at all. A bigger benchmark cannot fix it.</div>
+
+<h2>The standard check fires on noise</h2>
+<div class="note">A run loses 18 items and gains 15 — a coin flip, McNemar p = 0.73.
+<b>The aggregate-delta rule fires. The paired test stays silent.</b></div>
+
+<h2>A flat aggregate hides failed capabilities</h2>
+<div class="note">The headline moves −1.25%, inside the noise floor. Inside that release,
+<b>coding regressed 8.4% at p &lt; 0.0001.</b></div>
+
+<h2>The cost asymmetry is not what intuition says</h2>
+<table><tr><th class="n">Harm per degraded request</th><th class="n">Missed vs false alarm</th></tr><tr><td class='n'>$0.0002</td><td class='n'>0×</td></tr><tr><td class='n'>$0.002</td><td class='n'>2×</td></tr><tr><td class='n'>$0.02</td><td class='n'>19×</td></tr><tr><td class='n'>$0.2</td><td class='n'>187×</td></tr></table>
+<div class="note">About <b>two to one</b> at defaults, not orders of magnitude, and it swings across three orders
+on one unpublished parameter. <b>The honest output is that sensitivity, not a threshold.</b></div>
+
+<footer>Every figure is generated from the code in
+<a href="https://github.com/harshit-malik-nyu/evaldrift">the repository</a>, not typed.
+<a href="against.md">The case against this analysis</a>.</footer></div></body></html>
