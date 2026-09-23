@@ -77,6 +77,34 @@ class TestReadmeMatchesCode:
             assert f"{ratio:,.0f}x" in text, (
                 f"asymmetry {ratio:,.0f}x for harm={h} not in README")
 
+    def test_icc_figures_are_current(self):
+        """The measured ICC and its consequences must match the code."""
+        from evaldrift.icc import verdict
+        v = verdict("MMLU")
+        text = _readme()
+        assert f"{v['estimated_icc']:.3f}" in text
+        assert f"{v['effective_n']:.0f}" in text
+
+    def test_published_floor_figures_are_current(self):
+        from evaldrift.floors import PUBLISHED_FLOORS, signal_to_noise
+        text = _readme()
+        for f in PUBLISHED_FLOORS:
+            assert f"{f.typical:.1%}" in text, f"{f.benchmark} floor not in README"
+        assert f"{signal_to_noise('MMLU')['signal_to_noise_typical']:.2f}" in text
+
+    def test_the_case_against_is_not_stale(self):
+        """
+        against.md conceded two objections that have since been addressed.
+        A document that argues against a version of the project that no
+        longer exists is the drift this repository is about, one level up.
+        """
+        against = (ROOT / "docs" / "against.md")
+        if not against.exists():
+            pytest.skip("no against.md")
+        text = against.read_text()
+        assert "since addressed" in text or "since sourced" in text
+        assert "has not been measured\n\nThe harness exists" not in text
+
     def test_no_orphan_benchmark_named(self):
         """A benchmark discussed in prose but absent from the registry."""
         text = _readme()

@@ -36,18 +36,29 @@ and flatters each benchmark, and the verdicts are tested at 50% as well. But
 "my estimate, in the conservative direction" is weaker than "published", and
 the table reads as though every number in it were equally solid.
 
-## 3. The independence assumption is wrong, and it matters
+## 3. The independence assumption — since addressed, and the fix has its own problems
 
-Every interval here treats benchmark items as independent Bernoulli trials.
-They are not. MMLU items cluster by subject, GSM8K problems share solution
-templates, and a model that fails one item of a cluster tends to fail its
-neighbours.
+This originally read: every interval treats items as independent Bernoulli
+trials, they are not, and the true intervals are wider than reported.
 
-Positive correlation within clusters means the **effective sample size is
-smaller than the item count**, so the true intervals are wider than reported.
-That runs in the direction of strengthening the finding — but it also means the
-specific numbers in the table are not the right ones, and a reviewer entitled to
-be pedantic would say so.
+That is now modelled rather than conceded. `cluster.py` computes design effects
+from documented groupings and `icc.py` estimates the correlation from published
+per-subject accuracies: ICC ≈ 0.15, against a flip point of
+0.003. MMLU's effective sample size comes out at
+373 rather than 14,042.
+
+**The correction introduces its own weaknesses**, which now need stating:
+
+- The ICC estimate rests on **four subjects of one model** from one replication
+  study. Its confidence interval would be wide. The defence is that the
+  threshold it must clear is fifty times smaller — decisive, but not precise.
+- The design-effect formula assumes **equal cluster sizes**. MMLU subjects vary
+  substantially in item count, which biases DEFF upward.
+- Applying one ICC across all 57 subjects assumes homogeneous correlation.
+  Almost certainly false.
+
+So the corrected numbers are better than the uncorrected ones and should still
+not be quoted to two decimal places.
 
 ## 4. The cost model is barely a model
 
@@ -58,15 +69,24 @@ lends more credibility to the framework than the inputs deserve.
 
 A reader could reasonably say: delete the cost model, keep the measurement.
 
-## 5. The noise floor has not been measured
+## 5. The noise floor — since sourced, from someone else
 
-The harness exists and has not been run at scale. Every statement about what a
-paired test would resolve is conditional on a discordance figure that is
-assumed rather than observed.
+This originally read: the harness has not been run, so every paired-test figure
+is conditional on an assumed discordance.
 
-The project is careful to say so, but the most important number in it is
-currently a parameter rather than a measurement, and that is a real gap rather
-than a caveat.
+A published floor was then found — the MMLU-Pro authors' 24-prompt experiment,
+giving 4.5% typical variance on MMLU against
+frontier models clustering within 2–4%.
+
+**That closes the argument and not the measurement.** Prompt variance and
+run-to-run self-disagreement are different quantities. The published figure
+says the floor is large enough to matter; it does not give a team the number it
+needs for its own items and decoding settings. The harness remains unrun, and
+the project now leans on someone else's experiment for its most important
+constraint.
+
+A reader could fairly say that finding a better source is not the same as doing
+the work.
 
 ## 6. Nobody in the field is actually confused about this
 
