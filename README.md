@@ -64,6 +64,43 @@ breakdown shows an unambiguous failure.
 Most pipelines already produce the per-item results that reveal this, then
 discard them at the aggregation step.
 
+### Correcting for item clustering, effectively nothing survives
+
+`power.py` assumes benchmark items are independent. They are not: MMLU's 14,042
+items sit in 57 subjects, MMLU-Pro's 12,032 in 14 categories. A model failing
+one college-chemistry question is likelier to fail the next.
+
+Standard survey statistics applies — `DEFF = 1 + (m − 1) × ICC` — and because
+design effect scales with **cluster size**, benchmarks with hundreds of items
+per cluster are sensitive to tiny correlations.
+
+| Benchmark | Items | Clusters | Per cluster | Fails a 2-point claim at |
+|---|---:|---|---:|---|
+| MMLU | 14,042 | 57 subjects | 246 | **ICC 0.003** |
+| MMLU-Pro | 12,032 | 14 categorys | 859 | **ICC 0.001** |
+| MATH | 5,000 | 7 subjects | 714 | never supported it |
+| GPQA Diamond | 198 | 3 domains | 66 | never supported it |
+| TruthfulQA | 817 | 38 categorys | 22 | never supported it |
+
+**MMLU fails at ICC 0.003. MMLU-Pro at ICC 0.001.** Those are
+correlations of a third and a tenth of one percent — far below anything
+plausible for items grouped by subject. The three that were already failing
+stay failing.
+
+So the "six of nine" headline is the *generous* reading. Under any realistic
+clustering, none of these benchmarks resolves a two-point change.
+
+**Where this correction does and does not apply.** It governs claims that
+generalise beyond the sampled clusters — "better at graduate science", which is
+what model announcements assert. It does not apply to a benchmark used as a
+frozen tripwire on a fixed item set, where the items are a census rather than a
+sample. Both claims get made from the same number; only the first is bounded
+here.
+
+No ICC has been published for any LLM benchmark, so no corrected figure is
+asserted. **The flip points are the finding** — they say how much correlation it
+would take, and a reader can judge whether benchmark items are that correlated.
+
 ### Paired testing needs roughly three times fewer items
 
 Successive model versions agree on most items. A paired test compares only the
@@ -100,6 +137,27 @@ carries the instrument and the item set.
 
 **No measured floor is reported here yet.** Quoting one before it has been run
 would be precisely the error this project documents.
+
+#### Would the recommendation change if the floor came back low?
+
+Worth asking directly, because if the answer is no the harness is decoration.
+
+| Measured floor | Paired resolves, 300 items | Items to resolve 2 points |
+|---:|---:|---:|
+| 2% | 2.3% | 393 |
+| 5% | 3.6% | 982 |
+| 8% | 4.6% | 1,570 |
+| 15% | 6.3% | 2,944 |
+| 25% | 8.1% | 4,906 |
+
+**The recommendation holds at every plausible floor** — paired testing beats
+the aggregate rule, which resolves 10.5% on 300 items regardless, across the
+whole range.
+
+What moves is the *sizing*: 393 items against 4,906, a twelvefold swing in what
+you would have to build. So the floor does not validate the recommendation; it
+tells you how large your evaluation needs to be to act on it. That is the
+actionable number, and it is the one nobody has.
 
 ---
 

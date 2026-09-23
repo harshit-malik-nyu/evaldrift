@@ -426,3 +426,83 @@ class TestBenchmarkRegistry:
         gpqa = next(r for r in resolution_table(0.02)
                     if r["benchmark"] == "GPQA Diamond")
         assert gpqa["shortfall_multiple"] > 10
+
+
+class TestClustering:
+    """
+    Design effects from documented item grouping.
+
+    The correction runs in the direction that strengthens the headline, which
+    is exactly why it needs pinning: a mistake here would make the finding
+    look better than it is.
+    """
+
+    def test_no_correlation_means_no_correction(self):
+        from evaldrift.cluster import design_effect, effective_n
+        assert design_effect(250, 0.0) == 1.0
+        assert effective_n(1000, 250, 0.0) == 1000
+
+    def test_design_effect_grows_with_cluster_size(self):
+        from evaldrift.cluster import design_effect
+        assert design_effect(500, 0.05) > design_effect(50, 0.05)
+
+    def test_large_clusters_make_small_correlation_consequential(self):
+        """
+        The mechanism behind the finding: DEFF scales with cluster size, so a
+        benchmark with 859 items per cluster is sensitive to an ICC of 0.001.
+        """
+        from evaldrift.cluster import design_effect
+        assert design_effect(859, 0.001) > 1.8
+
+    def test_icc_outside_zero_one_is_rejected(self):
+        from evaldrift.cluster import design_effect
+        with pytest.raises(ValueError):
+            design_effect(100, 1.5)
+        with pytest.raises(ValueError):
+            design_effect(100, -0.1)
+
+    def test_correction_only_widens_intervals(self):
+        from evaldrift.cluster import STRUCTURES, corrected_resolution
+        for s in STRUCTURES:
+            r = corrected_resolution(s, icc=0.05)
+            assert r["mde_corrected"] >= r["mde_assuming_independence"]
+
+    def test_flip_point_is_none_when_the_claim_never_held(self):
+        """
+        Clustering cannot take away resolution a benchmark never had, and
+        reporting a flip point for it would imply otherwise.
+        """
+        from evaldrift.cluster import STRUCTURES, flip_point
+        gpqa = next(s for s in STRUCTURES if s.benchmark == "GPQA Diamond")
+        assert flip_point(gpqa, 0.02) is None
+
+    def test_flip_point_is_found_for_a_benchmark_that_did_hold(self):
+        from evaldrift.cluster import STRUCTURES, flip_point
+        mmlu = next(s for s in STRUCTURES if s.benchmark == "MMLU")
+        icc = flip_point(mmlu, 0.02)
+        assert icc is not None and 0 < icc < 0.05
+
+    def test_only_documented_structures_are_registered(self):
+        """
+        Inventing a cluster structure would manufacture the effect this
+        module measures.
+        """
+        from evaldrift.cluster import STRUCTURES
+        for s in STRUCTURES:
+            assert s.source and s.n_clusters > 1
+            assert s.n_clusters < s.n_items
+
+    def test_summary_states_that_no_icc_is_asserted(self):
+        from evaldrift.cluster import summary
+        text = summary()
+        assert "No intra-cluster correlation has been published" in text
+        assert "flip points are the finding" in text
+
+    def test_scope_limit_is_documented(self):
+        """
+        The correction governs generalising claims, not frozen-tripwire use.
+        Omitting that would overclaim.
+        """
+        import evaldrift.cluster as c
+        assert "does NOT apply" in c.__doc__
+        assert "census rather than a sample" in c.__doc__
