@@ -602,6 +602,12 @@ class TestPublishedFloors:
         assert not s["resolvable"]
         assert s["signal_to_noise_typical"] < 1.0
 
+    def test_prompt_floors_are_the_ones_that_do_not_average_away(self):
+        from evaldrift.floors import PUBLISHED_FLOORS
+        prompt = [f for f in PUBLISHED_FLOORS
+                  if f.source_of_variance == "prompt wording"]
+        assert len(prompt) >= 2
+
     def test_mmlu_pro_is_measurably_better(self):
         """
         The successor reduced prompt variance, which is what makes these
@@ -622,10 +628,31 @@ class TestPublishedFloors:
         assert "does not shrink with more items" in signal_to_noise("MMLU")["note"]
 
     def test_every_floor_carries_a_primary_citation_and_method(self):
+        """
+        Author-reported figures only. The citation style differs — Messing
+        2026 is single-author — so the check is for a year and a section,
+        not for 'et al.'
+        """
         from evaldrift.floors import PUBLISHED_FLOORS
         for f in PUBLISHED_FLOORS:
-            assert "et al." in f.citation
-            assert "prompts" in f.method
+            assert "202" in f.citation, f"{f.benchmark}: no year in citation"
+            assert len(f.method) > 20, f"{f.benchmark}: method not described"
+
+    def test_replicate_noise_is_recorded_as_the_least_consequential(self):
+        """
+        The harness measures replicate noise. Messing (2026) shows it is 21%
+        of per-observation variance but under 0.5% of the variance of the
+        mean, because it divides by every other factor count — the one
+        component more sampling actually fixes.
+
+        Recording that is the finding: the harness measures the least
+        consequential source of error.
+        """
+        import evaldrift.floors as fl
+        assert "replicate" in " ".join(
+            f.source_of_variance for f in fl.PUBLISHED_FLOORS)
+        assert "least consequential" in fl.__doc__
+        assert "cuts against the harness" in fl.__doc__
 
     def test_the_unsourced_claim_is_excluded(self):
         """

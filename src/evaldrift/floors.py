@@ -33,6 +33,24 @@ team's OWN floor, on its own items and its own decoding settings. But the
 question "is the floor large enough to matter" is already answered, and it was
 answered in the paper that introduced MMLU-Pro.
 
+The one component averaging actually fixes
+------------------------------------------
+Messing (2026) measures replicate noise directly — repeated API calls with
+identical inputs, which is precisely what `harness.html` was built to measure.
+It is 21% of per-observation variance in their safety demonstration.
+
+Their framing of that number is the part that matters, and it cuts against the
+harness rather than for it. Replicate noise is large per observation but
+contributes **under 0.5% of the variance of the mean** at 8 replications,
+because it divides by every other factor count. It is the one component that
+more sampling genuinely fixes.
+
+Prompt and judge variance do not divide away, which is why they dominate the
+corrected interval. So the harness measures the least consequential source of
+error, and the sources that matter are the ones it cannot see. That is worth
+stating plainly here rather than leaving the harness looking more useful than
+it is.
+
 A note on sourcing
 ------------------
 Only primary sources are recorded below — figures reported by the authors of
@@ -64,6 +82,16 @@ class NoiseFloor:
 
 
 PUBLISHED_FLOORS: list[NoiseFloor] = [
+    NoiseFloor(
+        benchmark="AILuminate (safety)",
+        source_of_variance="replicate — repeated calls, identical inputs",
+        typical=0.21,
+        maximum=None,
+        method="8 replications per cell across 50,760 calls; variance "
+               "decomposition via REML",
+        citation="Messing 2026, 'Hidden Measurement Error in LLM Pipelines', "
+                 "section 4.1 and SI section C.5",
+    ),
     NoiseFloor(
         benchmark="MMLU",
         source_of_variance="prompt wording",

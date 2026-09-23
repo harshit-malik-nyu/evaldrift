@@ -202,9 +202,38 @@ for GPT-4o on MMLU-Pro" — appears only in secondary commentary with no
 traceable primary source, so it is excluded. It would have strengthened the
 argument, which is why it was checked.
 
-**The harness still has a job**: a team's own floor, on its own items and
-decoding settings. But whether the floor is large enough to matter was settled
-in the MMLU-Pro paper.
+**And the harness measures the wrong thing.** Messing (2026) decomposes LLM
+pipeline variance properly and measures replicate noise — repeated calls with
+identical inputs, exactly what the harness does — at **21% of per-observation
+variance**. But it contributes **under 0.5% of the variance of the mean** at 8
+replications, because it divides by every other factor count.
+
+Replicate noise is the one component that more sampling actually fixes. Prompt
+and judge variance do not divide away, which is why they dominate. The harness
+measures the least consequential source of error.
+
+That finding came from reading the paper, not from running the harness, and it
+is a better answer than the harness would have given.
+
+## Concurrent work that partly supersedes this
+
+**[docs/related-work.md](docs/related-work.md)**
+
+Partway through, I found Messing (2026), which builds a full
+variance-decomposition framework over LLM pipelines — mixed model, REML, D-study
+projections, Monte Carlo validation. It is a more complete treatment of the same
+problem and should be read first.
+
+It independently establishes the central claim here: naive standard errors are
+**40–60% smaller** than corrected ones, and naive CI coverage **falls as n
+grows** — nominal at n=100, 79% at n=2,000. Independent confirmation is worth
+more than another derivation, and theirs is better.
+
+What this project still adds is narrower: per-benchmark resolution against
+published sizes, design effects converting documented clusters into an effective
+sample size and a flip point, and a CI gate that needs no model calls. That is a
+smaller contribution than it looked like before I found the paper, and saying so
+is more useful than not having looked.
 
 #### Would the recommendation change if the floor came back low?
 
