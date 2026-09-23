@@ -112,15 +112,35 @@ PUBLISHED_FLOORS: list[NoiseFloor] = [
 ]
 
 
+@dataclass(frozen=True)
+class CompetitiveSpread:
+    """
+    The gap these benchmarks are used to detect.
+
+    A dataclass rather than a dict: the dict mixed strings and floats, so the
+    numeric fields typed as `object` and arithmetic on them failed type
+    checking. Mixed-type config dicts hide exactly this.
+    """
+
+    low: float
+    high: float
+    description: str
+    citation: str
+
+    @property
+    def midpoint(self) -> float:
+        return (self.low + self.high) / 2
+
+
 # What the same literature reports for the gaps these benchmarks are used to
-# measure. The comparison is the finding.
-COMPETITIVE_SPREAD = {
-    "description": "State-of-the-art models cluster within this range on MMLU",
-    "low": 0.02,
-    "high": 0.04,
-    "citation": "Wang et al. 2024, on benchmark saturation and low "
-                "discriminativity",
-}
+# measure. The comparison against the floors above is the finding.
+COMPETITIVE_SPREAD = CompetitiveSpread(
+    low=0.02,
+    high=0.04,
+    description="State-of-the-art models cluster within this range on MMLU",
+    citation="Wang et al. 2024, on benchmark saturation and low "
+             "discriminativity",
+)
 
 
 def signal_to_noise(benchmark: str = "MMLU") -> dict:
@@ -136,8 +156,8 @@ def signal_to_noise(benchmark: str = "MMLU") -> dict:
     if floor is None:
         raise ValueError(f"no published floor recorded for {benchmark}")
 
-    lo, hi = COMPETITIVE_SPREAD["low"], COMPETITIVE_SPREAD["high"]
-    mid = (lo + hi) / 2
+    lo, hi = COMPETITIVE_SPREAD.low, COMPETITIVE_SPREAD.high
+    mid = COMPETITIVE_SPREAD.midpoint
 
     return {
         "benchmark": benchmark,
@@ -169,7 +189,7 @@ def summary() -> str:
         f"{mmlu['noise_floor_typical']:.1%} typically on MMLU, peaking at "
         f"{mmlu['noise_floor_max']:.2%}, against {pro['noise_floor_typical']:.1%} "
         f"on MMLU-Pro. The same literature reports frontier models clustering "
-        f"within {COMPETITIVE_SPREAD['low']:.0%}-{COMPETITIVE_SPREAD['high']:.0%} "
+        f"within {COMPETITIVE_SPREAD.low:.0%}-{COMPETITIVE_SPREAD.high:.0%} "
         f"of each other on MMLU. Measurement error is therefore as large as the "
         f"differences being measured, and on the original MMLU it is larger. "
         f"Crucially this variance does not shrink with more items: sampling "

@@ -678,3 +678,14 @@ class TestPublishedFloors:
         text = summary()
         assert "24 reasonable prompts" in text
         assert "does not fall at all" in text
+
+    def test_competitive_spread_is_typed(self):
+        """
+        REGRESSION. It was a dict mixing strings and floats, so the numeric
+        fields typed as `object` and arithmetic on them failed type checking.
+        Mixed-type config dicts hide exactly that.
+        """
+        from evaldrift.floors import COMPETITIVE_SPREAD
+        assert isinstance(COMPETITIVE_SPREAD.midpoint, float)
+        assert COMPETITIVE_SPREAD.low < COMPETITIVE_SPREAD.midpoint
+        assert COMPETITIVE_SPREAD.midpoint < COMPETITIVE_SPREAD.high
