@@ -582,3 +582,69 @@ class TestIccEstimation:
         v = verdict("MMLU")
         assert "one replication study" in v["basis"]
         assert "small basis" in v["caveat"]
+
+
+class TestPublishedFloors:
+    """
+    Noise floors reported by the benchmark authors themselves.
+
+    Better sourced than anything this project could measure, and they answer
+    the question the harness was built for.
+    """
+
+    def test_mmlu_noise_exceeds_the_differences_being_measured(self):
+        """
+        Prompt variance of 4-5% against frontier models clustering within
+        2-4%. The instrument cannot resolve what it is asked to resolve.
+        """
+        from evaldrift.floors import signal_to_noise
+        s = signal_to_noise("MMLU")
+        assert not s["resolvable"]
+        assert s["signal_to_noise_typical"] < 1.0
+
+    def test_mmlu_pro_is_measurably_better(self):
+        """
+        The successor reduced prompt variance, which is what makes these
+        figures credible rather than alarmist — the authors measured a
+        problem and then fixed part of it.
+        """
+        from evaldrift.floors import signal_to_noise
+        assert signal_to_noise("MMLU-Pro")["resolvable"]
+        assert (signal_to_noise("MMLU-Pro")["noise_floor_typical"]
+                < signal_to_noise("MMLU")["noise_floor_typical"])
+
+    def test_this_variance_does_not_shrink_with_more_items(self):
+        """
+        Why it matters more than sampling error: prompt sensitivity is not
+        sampling error and does not fall as one over root n.
+        """
+        from evaldrift.floors import signal_to_noise
+        assert "does not shrink with more items" in signal_to_noise("MMLU")["note"]
+
+    def test_every_floor_carries_a_primary_citation_and_method(self):
+        from evaldrift.floors import PUBLISHED_FLOORS
+        for f in PUBLISHED_FLOORS:
+            assert "et al." in f.citation
+            assert "prompts" in f.method
+
+    def test_the_unsourced_claim_is_excluded(self):
+        """
+        A widely repeated '13 percentage points' figure appears only in
+        secondary commentary with no traceable primary citation. It would
+        have strengthened the argument, which is exactly why it was checked
+        and left out.
+        """
+        import evaldrift.floors as fl
+        assert "13 percentage points" in fl.__doc__ and "excluded" in fl.__doc__
+        assert not any("13" in f.citation for f in fl.PUBLISHED_FLOORS)
+
+    def test_unknown_benchmark_is_refused(self):
+        from evaldrift.floors import signal_to_noise
+        with pytest.raises(ValueError):
+            signal_to_noise("NotABenchmark")
+
+    def test_summary_states_the_comparison_plainly(self):
+        from evaldrift.floors import summary
+        text = summary()
+        assert "24 reasonable prompts" in text
+        assert "does not fall at all" in text

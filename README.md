@@ -169,8 +169,42 @@ The harness runs 120 real GSM8K items from a fixed seeded sample. It calls the
 model API directly and so runs as a Claude artifact; the committed repository
 carries the instrument and the item set.
 
-**No measured floor is reported here yet.** Quoting one before it has been run
-would be precisely the error this project documents.
+### The floor is already published — by the benchmark authors
+
+The harness was built because no published floor was known. One exists, it is
+better sourced than anything measured here could be, and it comes from the
+paper that introduced MMLU-Pro.
+
+Wang et al. evaluated models under **24 different but reasonable prompts**,
+holding the model and the items fixed. Every point of spread is measurement
+error:
+
+| Benchmark | Typical prompt variance | Peak |
+|---|---:|---:|
+| MMLU | **4.5%** | 10.98% |
+| MMLU-Pro | **2.0%** | 3.74% |
+
+Set against what the same paper reports for the gaps being measured: frontier
+models cluster within **2–4%** of each other on MMLU.
+
+**On MMLU the measurement error is larger than the differences being
+measured** — a signal-to-noise ratio of 0.67.
+On MMLU-Pro it is 1.50, which is better and is
+why the successor benchmark exists.
+
+**And this variance does not shrink with more items.** Sampling error falls as
+one over root n; prompt sensitivity does not fall at all, because it is not
+sampling error. A bigger benchmark does not fix it. That makes it a harder
+constraint than everything else on this page.
+
+One widely repeated figure — "13 percentage points of reproducibility variance
+for GPT-4o on MMLU-Pro" — appears only in secondary commentary with no
+traceable primary source, so it is excluded. It would have strengthened the
+argument, which is why it was checked.
+
+**The harness still has a job**: a team's own floor, on its own items and
+decoding settings. But whether the floor is large enough to matter was settled
+in the MMLU-Pro paper.
 
 #### Would the recommendation change if the floor came back low?
 
