@@ -97,9 +97,43 @@ frozen tripwire on a fixed item set, where the items are a census rather than a
 sample. Both claims get made from the same number; only the first is bounded
 here.
 
-No ICC has been published for any LLM benchmark, so no corrected figure is
-asserted. **The flip points are the finding** — they say how much correlation it
-would take, and a reader can judge whether benchmark items are that correlated.
+### The correlation is not hypothetical — it can be estimated
+
+No ICC has been published for an LLM benchmark, but per-subject accuracies
+have, and the spread between subjects is itself evidence about clustering.
+
+Using the YourBench replication (arXiv 2504.01833), which reports per-subject
+accuracy **with standard errors** on original MMLU subsets:
+
+| Model | Estimated ICC |
+|---|---:|
+| Qwen2.5 7B | **0.149** |
+| Qwen1 7B | **0.097** |
+
+Sampling noise is subtracted before estimating — each subject's accuracy is
+measured on finite items, so part of the observed spread is not real. Omitting
+that correction inflates ICC, which is the direction that would flatter this
+conclusion, so the uncorrected figure is reported alongside it in the code.
+
+**Applying the estimate to MMLU:**
+
+| | |
+|---|---:|
+| Design effect | **38×** |
+| Effective sample size | **373** (from 14,042) |
+| Minimum detectable effect | 1.4% → **8.6%** |
+
+MMLU's 14,042 items behave like roughly **373** independent
+ones, and it resolves about **9%**, not one.
+
+Four subjects of one model is a small basis for a variance component, and the
+interval on it would be wide. It settles the question anyway: the threshold it
+must clear is 50 times smaller. An estimate can be badly
+wrong and still be decisive when the margin is that large — which is the only
+reason a four-cluster estimate is worth reporting.
+
+Two independently reported models give 0.149 and 0.097. Both
+clear the threshold by more than an order of magnitude.
 
 ### Paired testing needs roughly three times fewer items
 

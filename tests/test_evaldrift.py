@@ -506,3 +506,79 @@ class TestClustering:
         import evaldrift.cluster as c
         assert "does NOT apply" in c.__doc__
         assert "census rather than a sample" in c.__doc__
+
+
+class TestIccEstimation:
+    """
+    Estimating ICC from published per-subject accuracies.
+
+    The correction for sampling noise is the load-bearing part: omitting it
+    inflates ICC, and inflating ICC is the direction that flatters this
+    project's conclusion.
+    """
+
+    def test_sampling_variance_is_subtracted(self):
+        from evaldrift.icc import MMLU_QWEN25_7B, estimate
+        e = estimate(MMLU_QWEN25_7B)
+        assert e.icc < e.icc_uncorrected, (
+            "correction must reduce the estimate, not raise it")
+        assert e.between_variance < e.observed_variance
+
+    def test_two_independent_models_agree_on_the_order_of_magnitude(self):
+        from evaldrift.icc import MMLU_QWEN1_7B, MMLU_QWEN25_7B, estimate
+        a = estimate(MMLU_QWEN25_7B).icc
+        b = estimate(MMLU_QWEN1_7B).icc
+        assert 0.05 < a < 0.30 and 0.05 < b < 0.30
+
+    def test_estimate_dwarfs_the_flip_point(self):
+        """
+        The reason a four-cluster estimate is worth reporting: the threshold
+        it must clear is roughly fifty times smaller, so it settles the
+        question even if badly wrong.
+        """
+        from evaldrift.icc import verdict
+        v = verdict("MMLU")
+        assert v["exceeds_flip_by"] > 20
+
+    def test_clustering_collapses_the_effective_sample(self):
+        from evaldrift.icc import verdict
+        v = verdict("MMLU")
+        assert v["effective_n"] < 1000, "14,042 items should not survive"
+        assert v["mde_corrected"] > 4 * v["mde_assuming_independence"]
+
+    def test_pure_noise_yields_no_correlation(self):
+        """
+        Spread fully explained by sampling noise is evidence of NO clustering.
+        The estimator must not read it as correlation.
+        """
+        from evaldrift.icc import SubjectResult, estimate
+        rs = [SubjectResult(f"s{i}", 0.70, standard_error=0.05)
+              for i in range(5)]
+        assert estimate(rs).icc == 0.0
+
+    def test_two_clusters_is_refused(self):
+        """A variance component cannot be estimated from two observations."""
+        from evaldrift.icc import SubjectResult, estimate
+        with pytest.raises(ValueError, match="at least 3"):
+            estimate([SubjectResult("a", 0.8, 0.02),
+                      SubjectResult("b", 0.5, 0.02)])
+
+    def test_item_count_works_when_no_standard_error_is_given(self):
+        from evaldrift.icc import SubjectResult
+        r = SubjectResult("x", 0.75, n_items=100)
+        assert r.sampling_variance == pytest.approx(0.75 * 0.25 / 100)
+
+    def test_neither_error_nor_count_is_refused(self):
+        """
+        Without one, sampling noise cannot be separated from real spread, and
+        returning a number anyway would silently inflate the estimate.
+        """
+        from evaldrift.icc import SubjectResult
+        with pytest.raises(ValueError, match="standard error or an item count"):
+            _ = SubjectResult("x", 0.75).sampling_variance
+
+    def test_verdict_states_its_basis_and_caveat(self):
+        from evaldrift.icc import verdict
+        v = verdict("MMLU")
+        assert "one replication study" in v["basis"]
+        assert "small basis" in v["caveat"]
