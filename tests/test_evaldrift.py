@@ -649,10 +649,13 @@ class TestPublishedFloors:
         consequential source of error.
         """
         import evaldrift.floors as fl
+        # Prose wraps across lines, so whitespace is normalised first. A
+        # consistency check should catch drift, not line breaks.
+        doc = " ".join(fl.__doc__.split())
         assert "replicate" in " ".join(
             f.source_of_variance for f in fl.PUBLISHED_FLOORS)
-        assert "least consequential" in fl.__doc__
-        assert "cuts against the harness" in fl.__doc__
+        assert "least consequential" in doc
+        assert "cuts against the harness" in doc
 
     def test_the_unsourced_claim_is_excluded(self):
         """
