@@ -244,14 +244,39 @@ def is_claim_supportable(claimed_effect: float, n_items: int,
 
     if claimed_effect >= mde:
         return True, (
-            f"a {claimed_effect:.1%} change is detectable on {n_items:,} items "
+            f"a {claimed_effect:.1%} change meets the planning power target on {n_items:,} items "
             f"(minimum detectable effect {mde:.1%})"
         )
 
     needed = items_required(claimed_effect, baseline_accuracy, confidence, power)
     return False, (
-        f"a {claimed_effect:.1%} change is NOT distinguishable from noise on "
+        f"a {claimed_effect:.1%} change does NOT meet the planning power target on "
         f"{n_items:,} items. The minimum detectable effect is {mde:.1%}, and "
         f"{needed:,} items would be required — {needed / n_items:.1f}x the "
-        f"benchmark size."
+        f"benchmark size. This is not a significance test of observed results."
     )
+
+
+def paired_test(gained: int, lost: int, total: int, alpha: float = 0.05) -> dict:
+    """Two-sided exact McNemar test of paired binary outcomes.
+
+    Conditional on discordance, gains are binomial(d, 1/2) under the null.
+    A single comparison is assumed; selection/multiple comparisons need adjustment.
+    """
+    if any(type(v) is not int or v < 0 for v in (gained, lost, total)):
+        raise ValueError("counts must be nonnegative integers")
+    if total == 0 or gained + lost > total or not 0 < alpha < 1:
+        raise ValueError("invalid paired counts or alpha")
+    d = gained + lost
+    if d:
+        k = min(gained, lost)
+        terms = [math.lgamma(d+1)-math.lgamma(i+1)-math.lgamma(d-i+1)
+                 - d*math.log(2) for i in range(k+1)]
+        top = max(terms)
+        p = min(1.0, 2*math.exp(top)*sum(math.exp(t-top) for t in terms))
+    else:
+        p = 1.0
+    return {"gained": gained, "lost": lost, "total": total,
+            "difference": (gained-lost)/total, "p_value": p,
+            "significant": p <= alpha, "alpha": alpha,
+            "method": "exact paired McNemar; single prespecified comparison"}

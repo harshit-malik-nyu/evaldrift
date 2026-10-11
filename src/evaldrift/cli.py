@@ -15,7 +15,7 @@ import json
 import sys
 
 from .benchmarks import resolution_table
-from .power import is_claim_supportable, items_required, resolution
+from .power import is_claim_supportable, items_required, resolution, paired_test
 
 
 def _fmt_pct(x: float) -> str:
@@ -43,12 +43,12 @@ def cmd_resolution(args: argparse.Namespace) -> int:
 def cmd_check(args: argparse.Namespace) -> int:
     ok, why = is_claim_supportable(args.effect, args.items, args.accuracy)
     if args.json:
-        print(json.dumps({"supportable": ok, "explanation": why,
+        print(json.dumps({"adequately_powered": ok, "analysis_type": "planning", "explanation": why,
                           "items_needed": items_required(
                               args.effect, args.accuracy)}, indent=2))
         return 0 if ok else 1
 
-    print(("SUPPORTABLE" if ok else "NOT SUPPORTABLE") + f": {why}")
+    print(("ADEQUATELY POWERED" if ok else "UNDERPOWERED") + f": {why}")
     return 0 if ok else 1
 
 
@@ -59,7 +59,7 @@ def cmd_table(args: argparse.Namespace) -> int:
         return 0
 
     fails = sum(1 for r in rows if not r["claim_supportable"])
-    print(f"Can a {args.effect:.0%} improvement be distinguished from noise?")
+    print(f"Planning: is there 80% power for a {args.effect:.0%} difference?")
     print()
     print(f"{'benchmark':16s} {'items':>7} {'detectable':>11} "
           f"{'claim':>6} {'needed':>10}")
@@ -69,8 +69,18 @@ def cmd_table(args: argparse.Namespace) -> int:
               f"{'yes' if r['claim_supportable'] else 'NO':>6} "
               f"{r['items_needed_for_claim']:>10,}")
     print()
-    print(f"{fails} of {len(rows)} cannot distinguish a {args.effect:.0%} "
-          "change from noise.")
+    print(f"{fails} of {len(rows)} do not meet the planning target for a {args.effect:.0%} "
+          "change under the stated assumptions. This does not test observed results.")
+    return 0
+
+
+def cmd_paired(args):
+    try:
+        result = paired_test(args.gained, args.lost, args.total)
+    except ValueError as exc:
+        print(str(exc), file=sys.stderr)
+        return 2
+    print(json.dumps(result, indent=2))
     return 0
 
 
@@ -99,6 +109,11 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--effect", type=float, default=0.02)
     p.set_defaults(func=cmd_table)
 
+    p = sub.add_parser("paired", help="test observed paired outcomes")
+    p.add_argument("--gained", required=True, type=int)
+    p.add_argument("--lost", required=True, type=int)
+    p.add_argument("--total", required=True, type=int)
+    p.set_defaults(func=cmd_paired)
     args = ap.parse_args(argv)
     return args.func(args)
 

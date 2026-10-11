@@ -1,0 +1,20 @@
+{
+  "external_services_required": false,
+  "input_sha256": {
+    "src/evaldrift/benchmarks.py": "b76a4e5ce3ba5beee6a90dd7c6c968df9b073f90e462c0a74887050b523139b0",
+    "src/evaldrift/power.py": "6a361954744579d8795aab457ef37859ea8e0a661a4d6c3db2f609ea0ef86dea"
+  },
+  "outputs": {
+    "query_1.csv": "b0158fb605602612d4f355cca7ee0a68475dd5431e0081cb227b3d7243a090c3",
+    "query_2.csv": "3755108145b2815393e3f693887b924edae159723a57a03470b47340134b5984"
+  },
+  "project": "evaldrift",
+  "quality_checks": [
+    "SQL type and domain constraints",
+    "row-count reconciliation",
+    "SQLite integrity"
+  ],
+  "query_sha256": "ee57751876ca9968e75118f2699313534e3fd67e6118fe91a42f4d81b6100f5c",
+  "rows": 9,
+  "scope": "Analytic planning at 2 percentage points, 80% power and 95% confidence under independent proportions. MDE is not observed significance."
+}

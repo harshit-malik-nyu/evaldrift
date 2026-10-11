@@ -79,7 +79,7 @@ class TestPower:
     def test_claim_check_rejects_an_unsupportable_improvement(self):
         ok, why = is_claim_supportable(0.02, 200)
         assert not ok
-        assert "NOT distinguishable" in why
+        assert "NOT meet the planning power target" in why
         assert "would be required" in why
 
     def test_claim_check_accepts_a_large_effect(self):

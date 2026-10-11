@@ -25,7 +25,7 @@ class TestTable:
 
     def test_reports_how_many_fail(self, capsys):
         main(["table"])
-        assert "cannot distinguish" in capsys.readouterr().out
+        assert "do not meet the planning target" in capsys.readouterr().out
 
     def test_json_output_is_parseable(self, capsys):
         assert main(["--json", "table"]) == 0
@@ -54,13 +54,13 @@ class TestCheck:
     def test_explains_the_shortfall(self, capsys):
         main(["check", "0.02", "198"])
         out = capsys.readouterr().out
-        assert "NOT SUPPORTABLE" in out
+        assert "UNDERPOWERED" in out
         assert "would be required" in out
 
     def test_json_carries_the_verdict_and_the_gap(self, capsys):
         main(["--json", "check", "0.02", "198"])
         d = json.loads(capsys.readouterr().out)
-        assert d["supportable"] is False
+        assert d["adequately_powered"] is False
         assert d["items_needed"] > 198
 
 

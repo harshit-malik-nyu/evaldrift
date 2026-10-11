@@ -1,0 +1,10 @@
+benchmark,items,mde,required,additional_items,planning_status
+GPQA Diamond,198,0.12903154199821634,8242,8044,underpowered for planning target
+HumanEval,164,0.09281499931948406,3532,3368,underpowered for planning target
+TruthfulQA,817,0.0635210186826035,8242,7425,underpowered for planning target
+ARC-Challenge,1172,0.02522329586383948,1865,693,underpowered for planning target
+GSM8K,1319,0.023776243626846463,1865,546,underpowered for planning target
+MATH,5000,0.022412681744903743,6280,1280,underpowered for planning target
+MMLU-Pro,12032,0.015640497368814458,7359,0,meets planning target
+MMLU,14042,0.010865164597470809,4145,0,meets planning target
+HellaSwag,10042,0.008616988858584114,1865,0,meets planning target
