@@ -1,0 +1,23 @@
+{
+  "decision": "Decide whether a candidate model improves the release-critical task under paired evaluation.",
+  "primary_outcome": "Paired task-success difference on the prespecified eligible item set, accompanied by wins, losses, ties and an uncertainty interval.",
+  "denominator": "All assigned eligible items evaluated under both versions; report missing pairs and failures explicitly.",
+  "independence_unit": "Independent item or shared-source cluster when multiple questions derive from one document.",
+  "quality_guardrail": "Critical failure slices and latency/cost constraints; pair integrity and fixed stopping policy.",
+  "minimum_data": "Item/source IDs, both version IDs, paired outcomes, missingness cause, run seed and cost/latency records.",
+  "failure_handling": "Never drop one-sided failures silently. Specify failure-as-outcome or unknown-outcome treatment in advance and show missing-pair sensitivity.",
+  "release_rule": "Use a prespecified paired inferential method and meaningful improvement threshold plus guardrails; planning MDE is not an observed significance test.",
+  "reversal": "Effect disappears under valid pairing, critical failures worsen, or dependence invalidates the independent-item calculation.",
+  "project": "evaldrift",
+  "status": "PROPOSED MEASUREMENT CONTRACT; NOT AN EXECUTED DOMAIN EXPERIMENT",
+  "defense": [
+    [
+      "Does low planning power invalidate eight wins and no losses?",
+      "No. That paired example has exact two-sided p=.0078125. Planning power and the observed test answer different questions."
+    ],
+    [
+      "What is the business value?",
+      "Avoid paying for a larger evaluation or a model release without enough decision-relevant evidence, while preserving critical failure checks."
+    ]
+  ]
+}
