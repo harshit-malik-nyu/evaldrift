@@ -1,0 +1,2991 @@
+{
+  "base_case": {
+    "cost_factor": 1.0,
+    "options": [
+      {
+        "capacity_gate_pass": true,
+        "cash_outlay_usd": 116640.0,
+        "components": [
+          {
+            "activity": "Human labeling",
+            "cash_outlay_usd": 115200.0,
+            "economic_cost_usd": 115200.0,
+            "quantity": 96000.0,
+            "unit": "item"
+          },
+          {
+            "activity": "Inference",
+            "cash_outlay_usd": 1440.0,
+            "economic_cost_usd": 1440.0,
+            "quantity": 96000.0,
+            "unit": "item"
+          },
+          {
+            "activity": "Release review",
+            "cash_outlay_usd": 0.0,
+            "economic_cost_usd": 4800.0,
+            "quantity": 48.0,
+            "unit": "reviewer_hour"
+          }
+        ],
+        "economic_cost_usd": 126240.0,
+        "expected_incidents": 0.24,
+        "feasible": true,
+        "option": "Fixed large evaluation for every release",
+        "reviewer_hours": 48.0,
+        "risk_gate_pass": true,
+        "scenario_loss_usd": 4800.0,
+        "volume": 24.0
+      },
+      {
+        "capacity_gate_pass": true,
+        "cash_outlay_usd": 68136.0,
+        "components": [
+          {
+            "activity": "Human labeling",
+            "cash_outlay_usd": 51840.0,
+            "economic_cost_usd": 51840.0,
+            "quantity": 43200.0,
+            "unit": "item"
+          },
+          {
+            "activity": "Inference",
+            "cash_outlay_usd": 1296.0,
+            "economic_cost_usd": 1296.0,
+            "quantity": 43200.0,
+            "unit": "item"
+          },
+          {
+            "activity": "Design and release review",
+            "cash_outlay_usd": 0.0,
+            "economic_cost_usd": 9600.0,
+            "quantity": 96.0,
+            "unit": "reviewer_hour"
+          }
+        ],
+        "economic_cost_usd": 84936.0,
+        "expected_incidents": 0.36,
+        "feasible": true,
+        "option": "Prespecified paired evaluation plan",
+        "reviewer_hours": 96.0,
+        "risk_gate_pass": true,
+        "scenario_loss_usd": 7200.0,
+        "volume": 24.0
+      },
+      {
+        "capacity_gate_pass": true,
+        "cash_outlay_usd": 5760.0,
+        "components": [
+          {
+            "activity": "Human labeling",
+            "cash_outlay_usd": 5760.0,
+            "economic_cost_usd": 5760.0,
+            "quantity": 4800.0,
+            "unit": "item"
+          },
+          {
+            "activity": "Release review",
+            "cash_outlay_usd": 0.0,
+            "economic_cost_usd": 1200.0,
+            "quantity": 12.0,
+            "unit": "reviewer_hour"
+          }
+        ],
+        "economic_cost_usd": 45360.0,
+        "expected_incidents": 1.92,
+        "feasible": false,
+        "option": "Release on headline accuracy only",
+        "reviewer_hours": 12.0,
+        "risk_gate_pass": false,
+        "scenario_loss_usd": 38400.0,
+        "volume": 24.0
+      }
+    ],
+    "recommended_if_assumptions_hold": "Prespecified paired evaluation plan",
+    "risk_factor": 1.0,
+    "volume_factor": 1.0
+  },
+  "break_even": [
+    {
+      "additional_fixed_usd": 15000,
+      "minimum_integer_volume_to_break_even": 7,
+      "option": "Prespecified paired evaluation plan",
+      "qualification": "Positive unit advantage required; risk and capacity gates still apply.",
+      "relative_to": "Fixed large evaluation for every release",
+      "unit_economic_advantage_usd": 2346.0
+    },
+    {
+      "additional_fixed_usd": 0,
+      "minimum_integer_volume_to_break_even": 0,
+      "option": "Release on headline accuracy only",
+      "qualification": "Positive unit advantage required; risk and capacity gates still apply.",
+      "relative_to": "Fixed large evaluation for every release",
+      "unit_economic_advantage_usd": 3370.0
+    }
+  ],
+  "evidence_status": "ILLUSTRATIVE PLANNING ASSUMPTIONS; NOT OBSERVED ROI",
+  "scenarios": [
+    {
+      "cost_factor": 0.75,
+      "options": [
+        {
+          "capacity_gate_pass": true,
+          "cash_outlay_usd": 43740.0,
+          "components": [
+            {
+              "activity": "Human labeling",
+              "cash_outlay_usd": 43200.0,
+              "economic_cost_usd": 43200.0,
+              "quantity": 48000.0,
+              "unit": "item"
+            },
+            {
+              "activity": "Inference",
+              "cash_outlay_usd": 540.0,
+              "economic_cost_usd": 540.0,
+              "quantity": 48000.0,
+              "unit": "item"
+            },
+            {
+              "activity": "Release review",
+              "cash_outlay_usd": 0.0,
+              "economic_cost_usd": 1800.0,
+              "quantity": 24.0,
+              "unit": "reviewer_hour"
+            }
+          ],
+          "economic_cost_usd": 47940.0,
+          "expected_incidents": 0.12,
+          "feasible": true,
+          "option": "Fixed large evaluation for every release",
+          "reviewer_hours": 24.0,
+          "risk_gate_pass": true,
+          "scenario_loss_usd": 2400.0,
+          "volume": 12.0
+        },
+        {
+          "capacity_gate_pass": true,
+          "cash_outlay_usd": 34926.0,
+          "components": [
+            {
+              "activity": "Human labeling",
+              "cash_outlay_usd": 19440.0,
+              "economic_cost_usd": 19440.0,
+              "quantity": 21600.0,
+              "unit": "item"
+            },
+            {
+              "activity": "Inference",
+              "cash_outlay_usd": 486.0,
+              "economic_cost_usd": 486.0,
+              "quantity": 21600.0,
+              "unit": "item"
+            },
+            {
+              "activity": "Design and release review",
+              "cash_outlay_usd": 0.0,
+              "economic_cost_usd": 3600.0,
+              "quantity": 48.0,
+              "unit": "reviewer_hour"
+            }
+          ],
+          "economic_cost_usd": 42126.0,
+          "expected_incidents": 0.18,
+          "feasible": true,
+          "option": "Prespecified paired evaluation plan",
+          "reviewer_hours": 48.0,
+          "risk_gate_pass": true,
+          "scenario_loss_usd": 3600.0,
+          "volume": 12.0
+        },
+        {
+          "capacity_gate_pass": true,
+          "cash_outlay_usd": 2160.0,
+          "components": [
+            {
+              "activity": "Human labeling",
+              "cash_outlay_usd": 2160.0,
+              "economic_cost_usd": 2160.0,
+              "quantity": 2400.0,
+              "unit": "item"
+            },
+            {
+              "activity": "Release review",
+              "cash_outlay_usd": 0.0,
+              "economic_cost_usd": 450.0,
+              "quantity": 6.0,
+              "unit": "reviewer_hour"
+            }
+          ],
+          "economic_cost_usd": 21810.0,
+          "expected_incidents": 0.96,
+          "feasible": false,
+          "option": "Release on headline accuracy only",
+          "reviewer_hours": 6.0,
+          "risk_gate_pass": false,
+          "scenario_loss_usd": 19200.0,
+          "volume": 12.0
+        }
+      ],
+      "recommended_if_assumptions_hold": "Prespecified paired evaluation plan",
+      "risk_factor": 1,
+      "volume_factor": 0.5
+    },
+    {
+      "cost_factor": 0.75,
+      "options": [
+        {
+          "capacity_gate_pass": true,
+          "cash_outlay_usd": 43740.0,
+          "components": [
+            {
+              "activity": "Human labeling",
+              "cash_outlay_usd": 43200.0,
+              "economic_cost_usd": 43200.0,
+              "quantity": 48000.0,
+              "unit": "item"
+            },
+            {
+              "activity": "Inference",
+              "cash_outlay_usd": 540.0,
+              "economic_cost_usd": 540.0,
+              "quantity": 48000.0,
+              "unit": "item"
+            },
+            {
+              "activity": "Release review",
+              "cash_outlay_usd": 0.0,
+              "economic_cost_usd": 1800.0,
+              "quantity": 24.0,
+              "unit": "reviewer_hour"
+            }
+          ],
+          "economic_cost_usd": 50340.0,
+          "expected_incidents": 0.24,
+          "feasible": true,
+          "option": "Fixed large evaluation for every release",
+          "reviewer_hours": 24.0,
+          "risk_gate_pass": true,
+          "scenario_loss_usd": 4800.0,
+          "volume": 12.0
+        },
+        {
+          "capacity_gate_pass": true,
+          "cash_outlay_usd": 34926.0,
+          "components": [
+            {
+              "activity": "Human labeling",
+              "cash_outlay_usd": 19440.0,
+              "economic_cost_usd": 19440.0,
+              "quantity": 21600.0,
+              "unit": "item"
+            },
+            {
+              "activity": "Inference",
+              "cash_outlay_usd": 486.0,
+              "economic_cost_usd": 486.0,
+              "quantity": 21600.0,
+              "unit": "item"
+            },
+            {
+              "activity": "Design and release review",
+              "cash_outlay_usd": 0.0,
+              "economic_cost_usd": 3600.0,
+              "quantity": 48.0,
+              "unit": "reviewer_hour"
+            }
+          ],
+          "economic_cost_usd": 45726.0,
+          "expected_incidents": 0.36,
+          "feasible": false,
+          "option": "Prespecified paired evaluation plan",
+          "reviewer_hours": 48.0,
+          "risk_gate_pass": false,
+          "scenario_loss_usd": 7200.0,
+          "volume": 12.0
+        },
+        {
+          "capacity_gate_pass": true,
+          "cash_outlay_usd": 2160.0,
+          "components": [
+            {
+              "activity": "Human labeling",
+              "cash_outlay_usd": 2160.0,
+              "economic_cost_usd": 2160.0,
+              "quantity": 2400.0,
+              "unit": "item"
+            },
+            {
+              "activity": "Release review",
+              "cash_outlay_usd": 0.0,
+              "economic_cost_usd": 450.0,
+              "quantity": 6.0,
+              "unit": "reviewer_hour"
+            }
+          ],
+          "economic_cost_usd": 41010.0,
+          "expected_incidents": 1.92,
+          "feasible": false,
+          "option": "Release on headline accuracy only",
+          "reviewer_hours": 6.0,
+          "risk_gate_pass": false,
+          "scenario_loss_usd": 38400.0,
+          "volume": 12.0
+        }
+      ],
+      "recommended_if_assumptions_hold": "Fixed large evaluation for every release",
+      "risk_factor": 2,
+      "volume_factor": 0.5
+    },
+    {
+      "cost_factor": 0.75,
+      "options": [
+        {
+          "capacity_gate_pass": true,
+          "cash_outlay_usd": 43740.0,
+          "components": [
+            {
+              "activity": "Human labeling",
+              "cash_outlay_usd": 43200.0,
+              "economic_cost_usd": 43200.0,
+              "quantity": 48000.0,
+              "unit": "item"
+            },
+            {
+              "activity": "Inference",
+              "cash_outlay_usd": 540.0,
+              "economic_cost_usd": 540.0,
+              "quantity": 48000.0,
+              "unit": "item"
+            },
+            {
+              "activity": "Release review",
+              "cash_outlay_usd": 0.0,
+              "economic_cost_usd": 1800.0,
+              "quantity": 24.0,
+              "unit": "reviewer_hour"
+            }
+          ],
+          "economic_cost_usd": 55140.0,
+          "expected_incidents": 0.48,
+          "feasible": false,
+          "option": "Fixed large evaluation for every release",
+          "reviewer_hours": 24.0,
+          "risk_gate_pass": false,
+          "scenario_loss_usd": 9600.0,
+          "volume": 12.0
+        },
+        {
+          "capacity_gate_pass": true,
+          "cash_outlay_usd": 34926.0,
+          "components": [
+            {
+              "activity": "Human labeling",
+              "cash_outlay_usd": 19440.0,
+              "economic_cost_usd": 19440.0,
+              "quantity": 21600.0,
+              "unit": "item"
+            },
+            {
+              "activity": "Inference",
+              "cash_outlay_usd": 486.0,
+              "economic_cost_usd": 486.0,
+              "quantity": 21600.0,
+              "unit": "item"
+            },
+            {
+              "activity": "Design and release review",
+              "cash_outlay_usd": 0.0,
+              "economic_cost_usd": 3600.0,
+              "quantity": 48.0,
+              "unit": "reviewer_hour"
+            }
+          ],
+          "economic_cost_usd": 52926.0,
+          "expected_incidents": 0.72,
+          "feasible": false,
+          "option": "Prespecified paired evaluation plan",
+          "reviewer_hours": 48.0,
+          "risk_gate_pass": false,
+          "scenario_loss_usd": 14400.0,
+          "volume": 12.0
+        },
+        {
+          "capacity_gate_pass": true,
+          "cash_outlay_usd": 2160.0,
+          "components": [
+            {
+              "activity": "Human labeling",
+              "cash_outlay_usd": 2160.0,
+              "economic_cost_usd": 2160.0,
+              "quantity": 2400.0,
+              "unit": "item"
+            },
+            {
+              "activity": "Release review",
+              "cash_outlay_usd": 0.0,
+              "economic_cost_usd": 450.0,
+              "quantity": 6.0,
+              "unit": "reviewer_hour"
+            }
+          ],
+          "economic_cost_usd": 79410.0,
+          "expected_incidents": 3.84,
+          "feasible": false,
+          "option": "Release on headline accuracy only",
+          "reviewer_hours": 6.0,
+          "risk_gate_pass": false,
+          "scenario_loss_usd": 76800.0,
+          "volume": 12.0
+        }
+      ],
+      "recommended_if_assumptions_hold": null,
+      "risk_factor": 4,
+      "volume_factor": 0.5
+    },
+    {
+      "cost_factor": 1,
+      "options": [
+        {
+          "capacity_gate_pass": true,
+          "cash_outlay_usd": 58320.0,
+          "components": [
+            {
+              "activity": "Human labeling",
+              "cash_outlay_usd": 57600.0,
+              "economic_cost_usd": 57600.0,
+              "quantity": 48000.0,
+              "unit": "item"
+            },
+            {
+              "activity": "Inference",
+              "cash_outlay_usd": 720.0,
+              "economic_cost_usd": 720.0,
+              "quantity": 48000.0,
+              "unit": "item"
+            },
+            {
+              "activity": "Release review",
+              "cash_outlay_usd": 0.0,
+              "economic_cost_usd": 2400.0,
+              "quantity": 24.0,
+              "unit": "reviewer_hour"
+            }
+          ],
+          "economic_cost_usd": 63120.0,
+          "expected_incidents": 0.12,
+          "feasible": true,
+          "option": "Fixed large evaluation for every release",
+          "reviewer_hours": 24.0,
+          "risk_gate_pass": true,
+          "scenario_loss_usd": 2400.0,
+          "volume": 12.0
+        },
+        {
+          "capacity_gate_pass": true,
+          "cash_outlay_usd": 41568.0,
+          "components": [
+            {
+              "activity": "Human labeling",
+              "cash_outlay_usd": 25920.0,
+              "economic_cost_usd": 25920.0,
+              "quantity": 21600.0,
+              "unit": "item"
+            },
+            {
+              "activity": "Inference",
+              "cash_outlay_usd": 648.0,
+              "economic_cost_usd": 648.0,
+              "quantity": 21600.0,
+              "unit": "item"
+            },
+            {
+              "activity": "Design and release review",
+              "cash_outlay_usd": 0.0,
+              "economic_cost_usd": 4800.0,
+              "quantity": 48.0,
+              "unit": "reviewer_hour"
+            }
+          ],
+          "economic_cost_usd": 49968.0,
+          "expected_incidents": 0.18,
+          "feasible": true,
+          "option": "Prespecified paired evaluation plan",
+          "reviewer_hours": 48.0,
+          "risk_gate_pass": true,
+          "scenario_loss_usd": 3600.0,
+          "volume": 12.0
+        },
+        {
+          "capacity_gate_pass": true,
+          "cash_outlay_usd": 2880.0,
+          "components": [
+            {
+              "activity": "Human labeling",
+              "cash_outlay_usd": 2880.0,
+              "economic_cost_usd": 2880.0,
+              "quantity": 2400.0,
+              "unit": "item"
+            },
+            {
+              "activity": "Release review",
+              "cash_outlay_usd": 0.0,
+              "economic_cost_usd": 600.0,
+              "quantity": 6.0,
+              "unit": "reviewer_hour"
+            }
+          ],
+          "economic_cost_usd": 22680.0,
+          "expected_incidents": 0.96,
+          "feasible": false,
+          "option": "Release on headline accuracy only",
+          "reviewer_hours": 6.0,
+          "risk_gate_pass": false,
+          "scenario_loss_usd": 19200.0,
+          "volume": 12.0
+        }
+      ],
+      "recommended_if_assumptions_hold": "Prespecified paired evaluation plan",
+      "risk_factor": 1,
+      "volume_factor": 0.5
+    },
+    {
+      "cost_factor": 1,
+      "options": [
+        {
+          "capacity_gate_pass": true,
+          "cash_outlay_usd": 58320.0,
+          "components": [
+            {
+              "activity": "Human labeling",
+              "cash_outlay_usd": 57600.0,
+              "economic_cost_usd": 57600.0,
+              "quantity": 48000.0,
+              "unit": "item"
+            },
+            {
+              "activity": "Inference",
+              "cash_outlay_usd": 720.0,
+              "economic_cost_usd": 720.0,
+              "quantity": 48000.0,
+              "unit": "item"
+            },
+            {
+              "activity": "Release review",
+              "cash_outlay_usd": 0.0,
+              "economic_cost_usd": 2400.0,
+              "quantity": 24.0,
+              "unit": "reviewer_hour"
+            }
+          ],
+          "economic_cost_usd": 65520.0,
+          "expected_incidents": 0.24,
+          "feasible": true,
+          "option": "Fixed large evaluation for every release",
+          "reviewer_hours": 24.0,
+          "risk_gate_pass": true,
+          "scenario_loss_usd": 4800.0,
+          "volume": 12.0
+        },
+        {
+          "capacity_gate_pass": true,
+          "cash_outlay_usd": 41568.0,
+          "components": [
+            {
+              "activity": "Human labeling",
+              "cash_outlay_usd": 25920.0,
+              "economic_cost_usd": 25920.0,
+              "quantity": 21600.0,
+              "unit": "item"
+            },
+            {
+              "activity": "Inference",
+              "cash_outlay_usd": 648.0,
+              "economic_cost_usd": 648.0,
+              "quantity": 21600.0,
+              "unit": "item"
+            },
+            {
+              "activity": "Design and release review",
+              "cash_outlay_usd": 0.0,
+              "economic_cost_usd": 4800.0,
+              "quantity": 48.0,
+              "unit": "reviewer_hour"
+            }
+          ],
+          "economic_cost_usd": 53568.0,
+          "expected_incidents": 0.36,
+          "feasible": false,
+          "option": "Prespecified paired evaluation plan",
+          "reviewer_hours": 48.0,
+          "risk_gate_pass": false,
+          "scenario_loss_usd": 7200.0,
+          "volume": 12.0
+        },
+        {
+          "capacity_gate_pass": true,
+          "cash_outlay_usd": 2880.0,
+          "components": [
+            {
+              "activity": "Human labeling",
+              "cash_outlay_usd": 2880.0,
+              "economic_cost_usd": 2880.0,
+              "quantity": 2400.0,
+              "unit": "item"
+            },
+            {
+              "activity": "Release review",
+              "cash_outlay_usd": 0.0,
+              "economic_cost_usd": 600.0,
+              "quantity": 6.0,
+              "unit": "reviewer_hour"
+            }
+          ],
+          "economic_cost_usd": 41880.0,
+          "expected_incidents": 1.92,
+          "feasible": false,
+          "option": "Release on headline accuracy only",
+          "reviewer_hours": 6.0,
+          "risk_gate_pass": false,
+          "scenario_loss_usd": 38400.0,
+          "volume": 12.0
+        }
+      ],
+      "recommended_if_assumptions_hold": "Fixed large evaluation for every release",
+      "risk_factor": 2,
+      "volume_factor": 0.5
+    },
+    {
+      "cost_factor": 1,
+      "options": [
+        {
+          "capacity_gate_pass": true,
+          "cash_outlay_usd": 58320.0,
+          "components": [
+            {
+              "activity": "Human labeling",
+              "cash_outlay_usd": 57600.0,
+              "economic_cost_usd": 57600.0,
+              "quantity": 48000.0,
+              "unit": "item"
+            },
+            {
+              "activity": "Inference",
+              "cash_outlay_usd": 720.0,
+              "economic_cost_usd": 720.0,
+              "quantity": 48000.0,
+              "unit": "item"
+            },
+            {
+              "activity": "Release review",
+              "cash_outlay_usd": 0.0,
+              "economic_cost_usd": 2400.0,
+              "quantity": 24.0,
+              "unit": "reviewer_hour"
+            }
+          ],
+          "economic_cost_usd": 70320.0,
+          "expected_incidents": 0.48,
+          "feasible": false,
+          "option": "Fixed large evaluation for every release",
+          "reviewer_hours": 24.0,
+          "risk_gate_pass": false,
+          "scenario_loss_usd": 9600.0,
+          "volume": 12.0
+        },
+        {
+          "capacity_gate_pass": true,
+          "cash_outlay_usd": 41568.0,
+          "components": [
+            {
+              "activity": "Human labeling",
+              "cash_outlay_usd": 25920.0,
+              "economic_cost_usd": 25920.0,
+              "quantity": 21600.0,
+              "unit": "item"
+            },
+            {
+              "activity": "Inference",
+              "cash_outlay_usd": 648.0,
+              "economic_cost_usd": 648.0,
+              "quantity": 21600.0,
+              "unit": "item"
+            },
+            {
+              "activity": "Design and release review",
+              "cash_outlay_usd": 0.0,
+              "economic_cost_usd": 4800.0,
+              "quantity": 48.0,
+              "unit": "reviewer_hour"
+            }
+          ],
+          "economic_cost_usd": 60768.0,
+          "expected_incidents": 0.72,
+          "feasible": false,
+          "option": "Prespecified paired evaluation plan",
+          "reviewer_hours": 48.0,
+          "risk_gate_pass": false,
+          "scenario_loss_usd": 14400.0,
+          "volume": 12.0
+        },
+        {
+          "capacity_gate_pass": true,
+          "cash_outlay_usd": 2880.0,
+          "components": [
+            {
+              "activity": "Human labeling",
+              "cash_outlay_usd": 2880.0,
+              "economic_cost_usd": 2880.0,
+              "quantity": 2400.0,
+              "unit": "item"
+            },
+            {
+              "activity": "Release review",
+              "cash_outlay_usd": 0.0,
+              "economic_cost_usd": 600.0,
+              "quantity": 6.0,
+              "unit": "reviewer_hour"
+            }
+          ],
+          "economic_cost_usd": 80280.0,
+          "expected_incidents": 3.84,
+          "feasible": false,
+          "option": "Release on headline accuracy only",
+          "reviewer_hours": 6.0,
+          "risk_gate_pass": false,
+          "scenario_loss_usd": 76800.0,
+          "volume": 12.0
+        }
+      ],
+      "recommended_if_assumptions_hold": null,
+      "risk_factor": 4,
+      "volume_factor": 0.5
+    },
+    {
+      "cost_factor": 1.5,
+      "options": [
+        {
+          "capacity_gate_pass": true,
+          "cash_outlay_usd": 87480.0,
+          "components": [
+            {
+              "activity": "Human labeling",
+              "cash_outlay_usd": 86400.0,
+              "economic_cost_usd": 86400.0,
+              "quantity": 48000.0,
+              "unit": "item"
+            },
+            {
+              "activity": "Inference",
+              "cash_outlay_usd": 1080.0,
+              "economic_cost_usd": 1080.0,
+              "quantity": 48000.0,
+              "unit": "item"
+            },
+            {
+              "activity": "Release review",
+              "cash_outlay_usd": 0.0,
+              "economic_cost_usd": 3600.0,
+              "quantity": 24.0,
+              "unit": "reviewer_hour"
+            }
+          ],
+          "economic_cost_usd": 93480.0,
+          "expected_incidents": 0.12,
+          "feasible": true,
+          "option": "Fixed large evaluation for every release",
+          "reviewer_hours": 24.0,
+          "risk_gate_pass": true,
+          "scenario_loss_usd": 2400.0,
+          "volume": 12.0
+        },
+        {
+          "capacity_gate_pass": true,
+          "cash_outlay_usd": 54852.0,
+          "components": [
+            {
+              "activity": "Human labeling",
+              "cash_outlay_usd": 38880.0,
+              "economic_cost_usd": 38880.0,
+              "quantity": 21600.0,
+              "unit": "item"
+            },
+            {
+              "activity": "Inference",
+              "cash_outlay_usd": 972.0,
+              "economic_cost_usd": 972.0,
+              "quantity": 21600.0,
+              "unit": "item"
+            },
+            {
+              "activity": "Design and release review",
+              "cash_outlay_usd": 0.0,
+              "economic_cost_usd": 7200.0,
+              "quantity": 48.0,
+              "unit": "reviewer_hour"
+            }
+          ],
+          "economic_cost_usd": 65652.0,
+          "expected_incidents": 0.18,
+          "feasible": true,
+          "option": "Prespecified paired evaluation plan",
+          "reviewer_hours": 48.0,
+          "risk_gate_pass": true,
+          "scenario_loss_usd": 3600.0,
+          "volume": 12.0
+        },
+        {
+          "capacity_gate_pass": true,
+          "cash_outlay_usd": 4320.0,
+          "components": [
+            {
+              "activity": "Human labeling",
+              "cash_outlay_usd": 4320.0,
+              "economic_cost_usd": 4320.0,
+              "quantity": 2400.0,
+              "unit": "item"
+            },
+            {
+              "activity": "Release review",
+              "cash_outlay_usd": 0.0,
+              "economic_cost_usd": 900.0,
+              "quantity": 6.0,
+              "unit": "reviewer_hour"
+            }
+          ],
+          "economic_cost_usd": 24420.0,
+          "expected_incidents": 0.96,
+          "feasible": false,
+          "option": "Release on headline accuracy only",
+          "reviewer_hours": 6.0,
+          "risk_gate_pass": false,
+          "scenario_loss_usd": 19200.0,
+          "volume": 12.0
+        }
+      ],
+      "recommended_if_assumptions_hold": "Prespecified paired evaluation plan",
+      "risk_factor": 1,
+      "volume_factor": 0.5
+    },
+    {
+      "cost_factor": 1.5,
+      "options": [
+        {
+          "capacity_gate_pass": true,
+          "cash_outlay_usd": 87480.0,
+          "components": [
+            {
+              "activity": "Human labeling",
+              "cash_outlay_usd": 86400.0,
+              "economic_cost_usd": 86400.0,
+              "quantity": 48000.0,
+              "unit": "item"
+            },
+            {
+              "activity": "Inference",
+              "cash_outlay_usd": 1080.0,
+              "economic_cost_usd": 1080.0,
+              "quantity": 48000.0,
+              "unit": "item"
+            },
+            {
+              "activity": "Release review",
+              "cash_outlay_usd": 0.0,
+              "economic_cost_usd": 3600.0,
+              "quantity": 24.0,
+              "unit": "reviewer_hour"
+            }
+          ],
+          "economic_cost_usd": 95880.0,
+          "expected_incidents": 0.24,
+          "feasible": true,
+          "option": "Fixed large evaluation for every release",
+          "reviewer_hours": 24.0,
+          "risk_gate_pass": true,
+          "scenario_loss_usd": 4800.0,
+          "volume": 12.0
+        },
+        {
+          "capacity_gate_pass": true,
+          "cash_outlay_usd": 54852.0,
+          "components": [
+            {
+              "activity": "Human labeling",
+              "cash_outlay_usd": 38880.0,
+              "economic_cost_usd": 38880.0,
+              "quantity": 21600.0,
+              "unit": "item"
+            },
+            {
+              "activity": "Inference",
+              "cash_outlay_usd": 972.0,
+              "economic_cost_usd": 972.0,
+              "quantity": 21600.0,
+              "unit": "item"
+            },
+            {
+              "activity": "Design and release review",
+              "cash_outlay_usd": 0.0,
+              "economic_cost_usd": 7200.0,
+              "quantity": 48.0,
+              "unit": "reviewer_hour"
+            }
+          ],
+          "economic_cost_usd": 69252.0,
+          "expected_incidents": 0.36,
+          "feasible": false,
+          "option": "Prespecified paired evaluation plan",
+          "reviewer_hours": 48.0,
+          "risk_gate_pass": false,
+          "scenario_loss_usd": 7200.0,
+          "volume": 12.0
+        },
+        {
+          "capacity_gate_pass": true,
+          "cash_outlay_usd": 4320.0,
+          "components": [
+            {
+              "activity": "Human labeling",
+              "cash_outlay_usd": 4320.0,
+              "economic_cost_usd": 4320.0,
+              "quantity": 2400.0,
+              "unit": "item"
+            },
+            {
+              "activity": "Release review",
+              "cash_outlay_usd": 0.0,
+              "economic_cost_usd": 900.0,
+              "quantity": 6.0,
+              "unit": "reviewer_hour"
+            }
+          ],
+          "economic_cost_usd": 43620.0,
+          "expected_incidents": 1.92,
+          "feasible": false,
+          "option": "Release on headline accuracy only",
+          "reviewer_hours": 6.0,
+          "risk_gate_pass": false,
+          "scenario_loss_usd": 38400.0,
+          "volume": 12.0
+        }
+      ],
+      "recommended_if_assumptions_hold": "Fixed large evaluation for every release",
+      "risk_factor": 2,
+      "volume_factor": 0.5
+    },
+    {
+      "cost_factor": 1.5,
+      "options": [
+        {
+          "capacity_gate_pass": true,
+          "cash_outlay_usd": 87480.0,
+          "components": [
+            {
+              "activity": "Human labeling",
+              "cash_outlay_usd": 86400.0,
+              "economic_cost_usd": 86400.0,
+              "quantity": 48000.0,
+              "unit": "item"
+            },
+            {
+              "activity": "Inference",
+              "cash_outlay_usd": 1080.0,
+              "economic_cost_usd": 1080.0,
+              "quantity": 48000.0,
+              "unit": "item"
+            },
+            {
+              "activity": "Release review",
+              "cash_outlay_usd": 0.0,
+              "economic_cost_usd": 3600.0,
+              "quantity": 24.0,
+              "unit": "reviewer_hour"
+            }
+          ],
+          "economic_cost_usd": 100680.0,
+          "expected_incidents": 0.48,
+          "feasible": false,
+          "option": "Fixed large evaluation for every release",
+          "reviewer_hours": 24.0,
+          "risk_gate_pass": false,
+          "scenario_loss_usd": 9600.0,
+          "volume": 12.0
+        },
+        {
+          "capacity_gate_pass": true,
+          "cash_outlay_usd": 54852.0,
+          "components": [
+            {
+              "activity": "Human labeling",
+              "cash_outlay_usd": 38880.0,
+              "economic_cost_usd": 38880.0,
+              "quantity": 21600.0,
+              "unit": "item"
+            },
+            {
+              "activity": "Inference",
+              "cash_outlay_usd": 972.0,
+              "economic_cost_usd": 972.0,
+              "quantity": 21600.0,
+              "unit": "item"
+            },
+            {
+              "activity": "Design and release review",
+              "cash_outlay_usd": 0.0,
+              "economic_cost_usd": 7200.0,
+              "quantity": 48.0,
+              "unit": "reviewer_hour"
+            }
+          ],
+          "economic_cost_usd": 76452.0,
+          "expected_incidents": 0.72,
+          "feasible": false,
+          "option": "Prespecified paired evaluation plan",
+          "reviewer_hours": 48.0,
+          "risk_gate_pass": false,
+          "scenario_loss_usd": 14400.0,
+          "volume": 12.0
+        },
+        {
+          "capacity_gate_pass": true,
+          "cash_outlay_usd": 4320.0,
+          "components": [
+            {
+              "activity": "Human labeling",
+              "cash_outlay_usd": 4320.0,
+              "economic_cost_usd": 4320.0,
+              "quantity": 2400.0,
+              "unit": "item"
+            },
+            {
+              "activity": "Release review",
+              "cash_outlay_usd": 0.0,
+              "economic_cost_usd": 900.0,
+              "quantity": 6.0,
+              "unit": "reviewer_hour"
+            }
+          ],
+          "economic_cost_usd": 82020.0,
+          "expected_incidents": 3.84,
+          "feasible": false,
+          "option": "Release on headline accuracy only",
+          "reviewer_hours": 6.0,
+          "risk_gate_pass": false,
+          "scenario_loss_usd": 76800.0,
+          "volume": 12.0
+        }
+      ],
+      "recommended_if_assumptions_hold": null,
+      "risk_factor": 4,
+      "volume_factor": 0.5
+    },
+    {
+      "cost_factor": 0.75,
+      "options": [
+        {
+          "capacity_gate_pass": true,
+          "cash_outlay_usd": 87480.0,
+          "components": [
+            {
+              "activity": "Human labeling",
+              "cash_outlay_usd": 86400.0,
+              "economic_cost_usd": 86400.0,
+              "quantity": 96000,
+              "unit": "item"
+            },
+            {
+              "activity": "Inference",
+              "cash_outlay_usd": 1080.0,
+              "economic_cost_usd": 1080.0,
+              "quantity": 96000,
+              "unit": "item"
+            },
+            {
+              "activity": "Release review",
+              "cash_outlay_usd": 0.0,
+              "economic_cost_usd": 3600.0,
+              "quantity": 48.0,
+              "unit": "reviewer_hour"
+            }
+          ],
+          "economic_cost_usd": 95880.0,
+          "expected_incidents": 0.24,
+          "feasible": true,
+          "option": "Fixed large evaluation for every release",
+          "reviewer_hours": 48.0,
+          "risk_gate_pass": true,
+          "scenario_loss_usd": 4800.0,
+          "volume": 24
+        },
+        {
+          "capacity_gate_pass": true,
+          "cash_outlay_usd": 54852.0,
+          "components": [
+            {
+              "activity": "Human labeling",
+              "cash_outlay_usd": 38880.0,
+              "economic_cost_usd": 38880.0,
+              "quantity": 43200,
+              "unit": "item"
+            },
+            {
+              "activity": "Inference",
+              "cash_outlay_usd": 972.0,
+              "economic_cost_usd": 972.0,
+              "quantity": 43200,
+              "unit": "item"
+            },
+            {
+              "activity": "Design and release review",
+              "cash_outlay_usd": 0.0,
+              "economic_cost_usd": 7200.0,
+              "quantity": 96.0,
+              "unit": "reviewer_hour"
+            }
+          ],
+          "economic_cost_usd": 69252.0,
+          "expected_incidents": 0.36,
+          "feasible": true,
+          "option": "Prespecified paired evaluation plan",
+          "reviewer_hours": 96.0,
+          "risk_gate_pass": true,
+          "scenario_loss_usd": 7200.0,
+          "volume": 24
+        },
+        {
+          "capacity_gate_pass": true,
+          "cash_outlay_usd": 4320.0,
+          "components": [
+            {
+              "activity": "Human labeling",
+              "cash_outlay_usd": 4320.0,
+              "economic_cost_usd": 4320.0,
+              "quantity": 4800,
+              "unit": "item"
+            },
+            {
+              "activity": "Release review",
+              "cash_outlay_usd": 0.0,
+              "economic_cost_usd": 900.0,
+              "quantity": 12.0,
+              "unit": "reviewer_hour"
+            }
+          ],
+          "economic_cost_usd": 43620.0,
+          "expected_incidents": 1.92,
+          "feasible": false,
+          "option": "Release on headline accuracy only",
+          "reviewer_hours": 12.0,
+          "risk_gate_pass": false,
+          "scenario_loss_usd": 38400.0,
+          "volume": 24
+        }
+      ],
+      "recommended_if_assumptions_hold": "Prespecified paired evaluation plan",
+      "risk_factor": 1,
+      "volume_factor": 1
+    },
+    {
+      "cost_factor": 0.75,
+      "options": [
+        {
+          "capacity_gate_pass": true,
+          "cash_outlay_usd": 87480.0,
+          "components": [
+            {
+              "activity": "Human labeling",
+              "cash_outlay_usd": 86400.0,
+              "economic_cost_usd": 86400.0,
+              "quantity": 96000,
+              "unit": "item"
+            },
+            {
+              "activity": "Inference",
+              "cash_outlay_usd": 1080.0,
+              "economic_cost_usd": 1080.0,
+              "quantity": 96000,
+              "unit": "item"
+            },
+            {
+              "activity": "Release review",
+              "cash_outlay_usd": 0.0,
+              "economic_cost_usd": 3600.0,
+              "quantity": 48.0,
+              "unit": "reviewer_hour"
+            }
+          ],
+          "economic_cost_usd": 100680.0,
+          "expected_incidents": 0.48,
+          "feasible": true,
+          "option": "Fixed large evaluation for every release",
+          "reviewer_hours": 48.0,
+          "risk_gate_pass": true,
+          "scenario_loss_usd": 9600.0,
+          "volume": 24
+        },
+        {
+          "capacity_gate_pass": true,
+          "cash_outlay_usd": 54852.0,
+          "components": [
+            {
+              "activity": "Human labeling",
+              "cash_outlay_usd": 38880.0,
+              "economic_cost_usd": 38880.0,
+              "quantity": 43200,
+              "unit": "item"
+            },
+            {
+              "activity": "Inference",
+              "cash_outlay_usd": 972.0,
+              "economic_cost_usd": 972.0,
+              "quantity": 43200,
+              "unit": "item"
+            },
+            {
+              "activity": "Design and release review",
+              "cash_outlay_usd": 0.0,
+              "economic_cost_usd": 7200.0,
+              "quantity": 96.0,
+              "unit": "reviewer_hour"
+            }
+          ],
+          "economic_cost_usd": 76452.0,
+          "expected_incidents": 0.72,
+          "feasible": false,
+          "option": "Prespecified paired evaluation plan",
+          "reviewer_hours": 96.0,
+          "risk_gate_pass": false,
+          "scenario_loss_usd": 14400.0,
+          "volume": 24
+        },
+        {
+          "capacity_gate_pass": true,
+          "cash_outlay_usd": 4320.0,
+          "components": [
+            {
+              "activity": "Human labeling",
+              "cash_outlay_usd": 4320.0,
+              "economic_cost_usd": 4320.0,
+              "quantity": 4800,
+              "unit": "item"
+            },
+            {
+              "activity": "Release review",
+              "cash_outlay_usd": 0.0,
+              "economic_cost_usd": 900.0,
+              "quantity": 12.0,
+              "unit": "reviewer_hour"
+            }
+          ],
+          "economic_cost_usd": 82020.0,
+          "expected_incidents": 3.84,
+          "feasible": false,
+          "option": "Release on headline accuracy only",
+          "reviewer_hours": 12.0,
+          "risk_gate_pass": false,
+          "scenario_loss_usd": 76800.0,
+          "volume": 24
+        }
+      ],
+      "recommended_if_assumptions_hold": "Fixed large evaluation for every release",
+      "risk_factor": 2,
+      "volume_factor": 1
+    },
+    {
+      "cost_factor": 0.75,
+      "options": [
+        {
+          "capacity_gate_pass": true,
+          "cash_outlay_usd": 87480.0,
+          "components": [
+            {
+              "activity": "Human labeling",
+              "cash_outlay_usd": 86400.0,
+              "economic_cost_usd": 86400.0,
+              "quantity": 96000,
+              "unit": "item"
+            },
+            {
+              "activity": "Inference",
+              "cash_outlay_usd": 1080.0,
+              "economic_cost_usd": 1080.0,
+              "quantity": 96000,
+              "unit": "item"
+            },
+            {
+              "activity": "Release review",
+              "cash_outlay_usd": 0.0,
+              "economic_cost_usd": 3600.0,
+              "quantity": 48.0,
+              "unit": "reviewer_hour"
+            }
+          ],
+          "economic_cost_usd": 110280.0,
+          "expected_incidents": 0.96,
+          "feasible": false,
+          "option": "Fixed large evaluation for every release",
+          "reviewer_hours": 48.0,
+          "risk_gate_pass": false,
+          "scenario_loss_usd": 19200.0,
+          "volume": 24
+        },
+        {
+          "capacity_gate_pass": true,
+          "cash_outlay_usd": 54852.0,
+          "components": [
+            {
+              "activity": "Human labeling",
+              "cash_outlay_usd": 38880.0,
+              "economic_cost_usd": 38880.0,
+              "quantity": 43200,
+              "unit": "item"
+            },
+            {
+              "activity": "Inference",
+              "cash_outlay_usd": 972.0,
+              "economic_cost_usd": 972.0,
+              "quantity": 43200,
+              "unit": "item"
+            },
+            {
+              "activity": "Design and release review",
+              "cash_outlay_usd": 0.0,
+              "economic_cost_usd": 7200.0,
+              "quantity": 96.0,
+              "unit": "reviewer_hour"
+            }
+          ],
+          "economic_cost_usd": 90852.0,
+          "expected_incidents": 1.44,
+          "feasible": false,
+          "option": "Prespecified paired evaluation plan",
+          "reviewer_hours": 96.0,
+          "risk_gate_pass": false,
+          "scenario_loss_usd": 28800.0,
+          "volume": 24
+        },
+        {
+          "capacity_gate_pass": true,
+          "cash_outlay_usd": 4320.0,
+          "components": [
+            {
+              "activity": "Human labeling",
+              "cash_outlay_usd": 4320.0,
+              "economic_cost_usd": 4320.0,
+              "quantity": 4800,
+              "unit": "item"
+            },
+            {
+              "activity": "Release review",
+              "cash_outlay_usd": 0.0,
+              "economic_cost_usd": 900.0,
+              "quantity": 12.0,
+              "unit": "reviewer_hour"
+            }
+          ],
+          "economic_cost_usd": 158820.0,
+          "expected_incidents": 7.68,
+          "feasible": false,
+          "option": "Release on headline accuracy only",
+          "reviewer_hours": 12.0,
+          "risk_gate_pass": false,
+          "scenario_loss_usd": 153600.0,
+          "volume": 24
+        }
+      ],
+      "recommended_if_assumptions_hold": null,
+      "risk_factor": 4,
+      "volume_factor": 1
+    },
+    {
+      "cost_factor": 1,
+      "options": [
+        {
+          "capacity_gate_pass": true,
+          "cash_outlay_usd": 116640.0,
+          "components": [
+            {
+              "activity": "Human labeling",
+              "cash_outlay_usd": 115200.0,
+              "economic_cost_usd": 115200.0,
+              "quantity": 96000,
+              "unit": "item"
+            },
+            {
+              "activity": "Inference",
+              "cash_outlay_usd": 1440.0,
+              "economic_cost_usd": 1440.0,
+              "quantity": 96000,
+              "unit": "item"
+            },
+            {
+              "activity": "Release review",
+              "cash_outlay_usd": 0.0,
+              "economic_cost_usd": 4800.0,
+              "quantity": 48.0,
+              "unit": "reviewer_hour"
+            }
+          ],
+          "economic_cost_usd": 126240.0,
+          "expected_incidents": 0.24,
+          "feasible": true,
+          "option": "Fixed large evaluation for every release",
+          "reviewer_hours": 48.0,
+          "risk_gate_pass": true,
+          "scenario_loss_usd": 4800.0,
+          "volume": 24
+        },
+        {
+          "capacity_gate_pass": true,
+          "cash_outlay_usd": 68136.0,
+          "components": [
+            {
+              "activity": "Human labeling",
+              "cash_outlay_usd": 51840.0,
+              "economic_cost_usd": 51840.0,
+              "quantity": 43200,
+              "unit": "item"
+            },
+            {
+              "activity": "Inference",
+              "cash_outlay_usd": 1296.0,
+              "economic_cost_usd": 1296.0,
+              "quantity": 43200,
+              "unit": "item"
+            },
+            {
+              "activity": "Design and release review",
+              "cash_outlay_usd": 0.0,
+              "economic_cost_usd": 9600.0,
+              "quantity": 96.0,
+              "unit": "reviewer_hour"
+            }
+          ],
+          "economic_cost_usd": 84936.0,
+          "expected_incidents": 0.36,
+          "feasible": true,
+          "option": "Prespecified paired evaluation plan",
+          "reviewer_hours": 96.0,
+          "risk_gate_pass": true,
+          "scenario_loss_usd": 7200.0,
+          "volume": 24
+        },
+        {
+          "capacity_gate_pass": true,
+          "cash_outlay_usd": 5760.0,
+          "components": [
+            {
+              "activity": "Human labeling",
+              "cash_outlay_usd": 5760.0,
+              "economic_cost_usd": 5760.0,
+              "quantity": 4800,
+              "unit": "item"
+            },
+            {
+              "activity": "Release review",
+              "cash_outlay_usd": 0.0,
+              "economic_cost_usd": 1200.0,
+              "quantity": 12.0,
+              "unit": "reviewer_hour"
+            }
+          ],
+          "economic_cost_usd": 45360.0,
+          "expected_incidents": 1.92,
+          "feasible": false,
+          "option": "Release on headline accuracy only",
+          "reviewer_hours": 12.0,
+          "risk_gate_pass": false,
+          "scenario_loss_usd": 38400.0,
+          "volume": 24
+        }
+      ],
+      "recommended_if_assumptions_hold": "Prespecified paired evaluation plan",
+      "risk_factor": 1,
+      "volume_factor": 1
+    },
+    {
+      "cost_factor": 1,
+      "options": [
+        {
+          "capacity_gate_pass": true,
+          "cash_outlay_usd": 116640.0,
+          "components": [
+            {
+              "activity": "Human labeling",
+              "cash_outlay_usd": 115200.0,
+              "economic_cost_usd": 115200.0,
+              "quantity": 96000,
+              "unit": "item"
+            },
+            {
+              "activity": "Inference",
+              "cash_outlay_usd": 1440.0,
+              "economic_cost_usd": 1440.0,
+              "quantity": 96000,
+              "unit": "item"
+            },
+            {
+              "activity": "Release review",
+              "cash_outlay_usd": 0.0,
+              "economic_cost_usd": 4800.0,
+              "quantity": 48.0,
+              "unit": "reviewer_hour"
+            }
+          ],
+          "economic_cost_usd": 131040.0,
+          "expected_incidents": 0.48,
+          "feasible": true,
+          "option": "Fixed large evaluation for every release",
+          "reviewer_hours": 48.0,
+          "risk_gate_pass": true,
+          "scenario_loss_usd": 9600.0,
+          "volume": 24
+        },
+        {
+          "capacity_gate_pass": true,
+          "cash_outlay_usd": 68136.0,
+          "components": [
+            {
+              "activity": "Human labeling",
+              "cash_outlay_usd": 51840.0,
+              "economic_cost_usd": 51840.0,
+              "quantity": 43200,
+              "unit": "item"
+            },
+            {
+              "activity": "Inference",
+              "cash_outlay_usd": 1296.0,
+              "economic_cost_usd": 1296.0,
+              "quantity": 43200,
+              "unit": "item"
+            },
+            {
+              "activity": "Design and release review",
+              "cash_outlay_usd": 0.0,
+              "economic_cost_usd": 9600.0,
+              "quantity": 96.0,
+              "unit": "reviewer_hour"
+            }
+          ],
+          "economic_cost_usd": 92136.0,
+          "expected_incidents": 0.72,
+          "feasible": false,
+          "option": "Prespecified paired evaluation plan",
+          "reviewer_hours": 96.0,
+          "risk_gate_pass": false,
+          "scenario_loss_usd": 14400.0,
+          "volume": 24
+        },
+        {
+          "capacity_gate_pass": true,
+          "cash_outlay_usd": 5760.0,
+          "components": [
+            {
+              "activity": "Human labeling",
+              "cash_outlay_usd": 5760.0,
+              "economic_cost_usd": 5760.0,
+              "quantity": 4800,
+              "unit": "item"
+            },
+            {
+              "activity": "Release review",
+              "cash_outlay_usd": 0.0,
+              "economic_cost_usd": 1200.0,
+              "quantity": 12.0,
+              "unit": "reviewer_hour"
+            }
+          ],
+          "economic_cost_usd": 83760.0,
+          "expected_incidents": 3.84,
+          "feasible": false,
+          "option": "Release on headline accuracy only",
+          "reviewer_hours": 12.0,
+          "risk_gate_pass": false,
+          "scenario_loss_usd": 76800.0,
+          "volume": 24
+        }
+      ],
+      "recommended_if_assumptions_hold": "Fixed large evaluation for every release",
+      "risk_factor": 2,
+      "volume_factor": 1
+    },
+    {
+      "cost_factor": 1,
+      "options": [
+        {
+          "capacity_gate_pass": true,
+          "cash_outlay_usd": 116640.0,
+          "components": [
+            {
+              "activity": "Human labeling",
+              "cash_outlay_usd": 115200.0,
+              "economic_cost_usd": 115200.0,
+              "quantity": 96000,
+              "unit": "item"
+            },
+            {
+              "activity": "Inference",
+              "cash_outlay_usd": 1440.0,
+              "economic_cost_usd": 1440.0,
+              "quantity": 96000,
+              "unit": "item"
+            },
+            {
+              "activity": "Release review",
+              "cash_outlay_usd": 0.0,
+              "economic_cost_usd": 4800.0,
+              "quantity": 48.0,
+              "unit": "reviewer_hour"
+            }
+          ],
+          "economic_cost_usd": 140640.0,
+          "expected_incidents": 0.96,
+          "feasible": false,
+          "option": "Fixed large evaluation for every release",
+          "reviewer_hours": 48.0,
+          "risk_gate_pass": false,
+          "scenario_loss_usd": 19200.0,
+          "volume": 24
+        },
+        {
+          "capacity_gate_pass": true,
+          "cash_outlay_usd": 68136.0,
+          "components": [
+            {
+              "activity": "Human labeling",
+              "cash_outlay_usd": 51840.0,
+              "economic_cost_usd": 51840.0,
+              "quantity": 43200,
+              "unit": "item"
+            },
+            {
+              "activity": "Inference",
+              "cash_outlay_usd": 1296.0,
+              "economic_cost_usd": 1296.0,
+              "quantity": 43200,
+              "unit": "item"
+            },
+            {
+              "activity": "Design and release review",
+              "cash_outlay_usd": 0.0,
+              "economic_cost_usd": 9600.0,
+              "quantity": 96.0,
+              "unit": "reviewer_hour"
+            }
+          ],
+          "economic_cost_usd": 106536.0,
+          "expected_incidents": 1.44,
+          "feasible": false,
+          "option": "Prespecified paired evaluation plan",
+          "reviewer_hours": 96.0,
+          "risk_gate_pass": false,
+          "scenario_loss_usd": 28800.0,
+          "volume": 24
+        },
+        {
+          "capacity_gate_pass": true,
+          "cash_outlay_usd": 5760.0,
+          "components": [
+            {
+              "activity": "Human labeling",
+              "cash_outlay_usd": 5760.0,
+              "economic_cost_usd": 5760.0,
+              "quantity": 4800,
+              "unit": "item"
+            },
+            {
+              "activity": "Release review",
+              "cash_outlay_usd": 0.0,
+              "economic_cost_usd": 1200.0,
+              "quantity": 12.0,
+              "unit": "reviewer_hour"
+            }
+          ],
+          "economic_cost_usd": 160560.0,
+          "expected_incidents": 7.68,
+          "feasible": false,
+          "option": "Release on headline accuracy only",
+          "reviewer_hours": 12.0,
+          "risk_gate_pass": false,
+          "scenario_loss_usd": 153600.0,
+          "volume": 24
+        }
+      ],
+      "recommended_if_assumptions_hold": null,
+      "risk_factor": 4,
+      "volume_factor": 1
+    },
+    {
+      "cost_factor": 1.5,
+      "options": [
+        {
+          "capacity_gate_pass": true,
+          "cash_outlay_usd": 174960.0,
+          "components": [
+            {
+              "activity": "Human labeling",
+              "cash_outlay_usd": 172800.0,
+              "economic_cost_usd": 172800.0,
+              "quantity": 96000,
+              "unit": "item"
+            },
+            {
+              "activity": "Inference",
+              "cash_outlay_usd": 2160.0,
+              "economic_cost_usd": 2160.0,
+              "quantity": 96000,
+              "unit": "item"
+            },
+            {
+              "activity": "Release review",
+              "cash_outlay_usd": 0.0,
+              "economic_cost_usd": 7200.0,
+              "quantity": 48.0,
+              "unit": "reviewer_hour"
+            }
+          ],
+          "economic_cost_usd": 186960.0,
+          "expected_incidents": 0.24,
+          "feasible": true,
+          "option": "Fixed large evaluation for every release",
+          "reviewer_hours": 48.0,
+          "risk_gate_pass": true,
+          "scenario_loss_usd": 4800.0,
+          "volume": 24
+        },
+        {
+          "capacity_gate_pass": true,
+          "cash_outlay_usd": 94704.0,
+          "components": [
+            {
+              "activity": "Human labeling",
+              "cash_outlay_usd": 77760.0,
+              "economic_cost_usd": 77760.0,
+              "quantity": 43200,
+              "unit": "item"
+            },
+            {
+              "activity": "Inference",
+              "cash_outlay_usd": 1944.0,
+              "economic_cost_usd": 1944.0,
+              "quantity": 43200,
+              "unit": "item"
+            },
+            {
+              "activity": "Design and release review",
+              "cash_outlay_usd": 0.0,
+              "economic_cost_usd": 14400.0,
+              "quantity": 96.0,
+              "unit": "reviewer_hour"
+            }
+          ],
+          "economic_cost_usd": 116304.0,
+          "expected_incidents": 0.36,
+          "feasible": true,
+          "option": "Prespecified paired evaluation plan",
+          "reviewer_hours": 96.0,
+          "risk_gate_pass": true,
+          "scenario_loss_usd": 7200.0,
+          "volume": 24
+        },
+        {
+          "capacity_gate_pass": true,
+          "cash_outlay_usd": 8640.0,
+          "components": [
+            {
+              "activity": "Human labeling",
+              "cash_outlay_usd": 8640.0,
+              "economic_cost_usd": 8640.0,
+              "quantity": 4800,
+              "unit": "item"
+            },
+            {
+              "activity": "Release review",
+              "cash_outlay_usd": 0.0,
+              "economic_cost_usd": 1800.0,
+              "quantity": 12.0,
+              "unit": "reviewer_hour"
+            }
+          ],
+          "economic_cost_usd": 48840.0,
+          "expected_incidents": 1.92,
+          "feasible": false,
+          "option": "Release on headline accuracy only",
+          "reviewer_hours": 12.0,
+          "risk_gate_pass": false,
+          "scenario_loss_usd": 38400.0,
+          "volume": 24
+        }
+      ],
+      "recommended_if_assumptions_hold": "Prespecified paired evaluation plan",
+      "risk_factor": 1,
+      "volume_factor": 1
+    },
+    {
+      "cost_factor": 1.5,
+      "options": [
+        {
+          "capacity_gate_pass": true,
+          "cash_outlay_usd": 174960.0,
+          "components": [
+            {
+              "activity": "Human labeling",
+              "cash_outlay_usd": 172800.0,
+              "economic_cost_usd": 172800.0,
+              "quantity": 96000,
+              "unit": "item"
+            },
+            {
+              "activity": "Inference",
+              "cash_outlay_usd": 2160.0,
+              "economic_cost_usd": 2160.0,
+              "quantity": 96000,
+              "unit": "item"
+            },
+            {
+              "activity": "Release review",
+              "cash_outlay_usd": 0.0,
+              "economic_cost_usd": 7200.0,
+              "quantity": 48.0,
+              "unit": "reviewer_hour"
+            }
+          ],
+          "economic_cost_usd": 191760.0,
+          "expected_incidents": 0.48,
+          "feasible": true,
+          "option": "Fixed large evaluation for every release",
+          "reviewer_hours": 48.0,
+          "risk_gate_pass": true,
+          "scenario_loss_usd": 9600.0,
+          "volume": 24
+        },
+        {
+          "capacity_gate_pass": true,
+          "cash_outlay_usd": 94704.0,
+          "components": [
+            {
+              "activity": "Human labeling",
+              "cash_outlay_usd": 77760.0,
+              "economic_cost_usd": 77760.0,
+              "quantity": 43200,
+              "unit": "item"
+            },
+            {
+              "activity": "Inference",
+              "cash_outlay_usd": 1944.0,
+              "economic_cost_usd": 1944.0,
+              "quantity": 43200,
+              "unit": "item"
+            },
+            {
+              "activity": "Design and release review",
+              "cash_outlay_usd": 0.0,
+              "economic_cost_usd": 14400.0,
+              "quantity": 96.0,
+              "unit": "reviewer_hour"
+            }
+          ],
+          "economic_cost_usd": 123504.0,
+          "expected_incidents": 0.72,
+          "feasible": false,
+          "option": "Prespecified paired evaluation plan",
+          "reviewer_hours": 96.0,
+          "risk_gate_pass": false,
+          "scenario_loss_usd": 14400.0,
+          "volume": 24
+        },
+        {
+          "capacity_gate_pass": true,
+          "cash_outlay_usd": 8640.0,
+          "components": [
+            {
+              "activity": "Human labeling",
+              "cash_outlay_usd": 8640.0,
+              "economic_cost_usd": 8640.0,
+              "quantity": 4800,
+              "unit": "item"
+            },
+            {
+              "activity": "Release review",
+              "cash_outlay_usd": 0.0,
+              "economic_cost_usd": 1800.0,
+              "quantity": 12.0,
+              "unit": "reviewer_hour"
+            }
+          ],
+          "economic_cost_usd": 87240.0,
+          "expected_incidents": 3.84,
+          "feasible": false,
+          "option": "Release on headline accuracy only",
+          "reviewer_hours": 12.0,
+          "risk_gate_pass": false,
+          "scenario_loss_usd": 76800.0,
+          "volume": 24
+        }
+      ],
+      "recommended_if_assumptions_hold": "Fixed large evaluation for every release",
+      "risk_factor": 2,
+      "volume_factor": 1
+    },
+    {
+      "cost_factor": 1.5,
+      "options": [
+        {
+          "capacity_gate_pass": true,
+          "cash_outlay_usd": 174960.0,
+          "components": [
+            {
+              "activity": "Human labeling",
+              "cash_outlay_usd": 172800.0,
+              "economic_cost_usd": 172800.0,
+              "quantity": 96000,
+              "unit": "item"
+            },
+            {
+              "activity": "Inference",
+              "cash_outlay_usd": 2160.0,
+              "economic_cost_usd": 2160.0,
+              "quantity": 96000,
+              "unit": "item"
+            },
+            {
+              "activity": "Release review",
+              "cash_outlay_usd": 0.0,
+              "economic_cost_usd": 7200.0,
+              "quantity": 48.0,
+              "unit": "reviewer_hour"
+            }
+          ],
+          "economic_cost_usd": 201360.0,
+          "expected_incidents": 0.96,
+          "feasible": false,
+          "option": "Fixed large evaluation for every release",
+          "reviewer_hours": 48.0,
+          "risk_gate_pass": false,
+          "scenario_loss_usd": 19200.0,
+          "volume": 24
+        },
+        {
+          "capacity_gate_pass": true,
+          "cash_outlay_usd": 94704.0,
+          "components": [
+            {
+              "activity": "Human labeling",
+              "cash_outlay_usd": 77760.0,
+              "economic_cost_usd": 77760.0,
+              "quantity": 43200,
+              "unit": "item"
+            },
+            {
+              "activity": "Inference",
+              "cash_outlay_usd": 1944.0,
+              "economic_cost_usd": 1944.0,
+              "quantity": 43200,
+              "unit": "item"
+            },
+            {
+              "activity": "Design and release review",
+              "cash_outlay_usd": 0.0,
+              "economic_cost_usd": 14400.0,
+              "quantity": 96.0,
+              "unit": "reviewer_hour"
+            }
+          ],
+          "economic_cost_usd": 137904.0,
+          "expected_incidents": 1.44,
+          "feasible": false,
+          "option": "Prespecified paired evaluation plan",
+          "reviewer_hours": 96.0,
+          "risk_gate_pass": false,
+          "scenario_loss_usd": 28800.0,
+          "volume": 24
+        },
+        {
+          "capacity_gate_pass": true,
+          "cash_outlay_usd": 8640.0,
+          "components": [
+            {
+              "activity": "Human labeling",
+              "cash_outlay_usd": 8640.0,
+              "economic_cost_usd": 8640.0,
+              "quantity": 4800,
+              "unit": "item"
+            },
+            {
+              "activity": "Release review",
+              "cash_outlay_usd": 0.0,
+              "economic_cost_usd": 1800.0,
+              "quantity": 12.0,
+              "unit": "reviewer_hour"
+            }
+          ],
+          "economic_cost_usd": 164040.0,
+          "expected_incidents": 7.68,
+          "feasible": false,
+          "option": "Release on headline accuracy only",
+          "reviewer_hours": 12.0,
+          "risk_gate_pass": false,
+          "scenario_loss_usd": 153600.0,
+          "volume": 24
+        }
+      ],
+      "recommended_if_assumptions_hold": null,
+      "risk_factor": 4,
+      "volume_factor": 1
+    },
+    {
+      "cost_factor": 0.75,
+      "options": [
+        {
+          "capacity_gate_pass": true,
+          "cash_outlay_usd": 174960.0,
+          "components": [
+            {
+              "activity": "Human labeling",
+              "cash_outlay_usd": 172800.0,
+              "economic_cost_usd": 172800.0,
+              "quantity": 192000,
+              "unit": "item"
+            },
+            {
+              "activity": "Inference",
+              "cash_outlay_usd": 2160.0,
+              "economic_cost_usd": 2160.0,
+              "quantity": 192000,
+              "unit": "item"
+            },
+            {
+              "activity": "Release review",
+              "cash_outlay_usd": 0.0,
+              "economic_cost_usd": 7200.0,
+              "quantity": 96.0,
+              "unit": "reviewer_hour"
+            }
+          ],
+          "economic_cost_usd": 191760.0,
+          "expected_incidents": 0.48,
+          "feasible": true,
+          "option": "Fixed large evaluation for every release",
+          "reviewer_hours": 96.0,
+          "risk_gate_pass": true,
+          "scenario_loss_usd": 9600.0,
+          "volume": 48
+        },
+        {
+          "capacity_gate_pass": true,
+          "cash_outlay_usd": 94704.0,
+          "components": [
+            {
+              "activity": "Human labeling",
+              "cash_outlay_usd": 77760.0,
+              "economic_cost_usd": 77760.0,
+              "quantity": 86400,
+              "unit": "item"
+            },
+            {
+              "activity": "Inference",
+              "cash_outlay_usd": 1944.0,
+              "economic_cost_usd": 1944.0,
+              "quantity": 86400,
+              "unit": "item"
+            },
+            {
+              "activity": "Design and release review",
+              "cash_outlay_usd": 0.0,
+              "economic_cost_usd": 14400.0,
+              "quantity": 192.0,
+              "unit": "reviewer_hour"
+            }
+          ],
+          "economic_cost_usd": 123504.0,
+          "expected_incidents": 0.72,
+          "feasible": true,
+          "option": "Prespecified paired evaluation plan",
+          "reviewer_hours": 192.0,
+          "risk_gate_pass": true,
+          "scenario_loss_usd": 14400.0,
+          "volume": 48
+        },
+        {
+          "capacity_gate_pass": true,
+          "cash_outlay_usd": 8640.0,
+          "components": [
+            {
+              "activity": "Human labeling",
+              "cash_outlay_usd": 8640.0,
+              "economic_cost_usd": 8640.0,
+              "quantity": 9600,
+              "unit": "item"
+            },
+            {
+              "activity": "Release review",
+              "cash_outlay_usd": 0.0,
+              "economic_cost_usd": 1800.0,
+              "quantity": 24.0,
+              "unit": "reviewer_hour"
+            }
+          ],
+          "economic_cost_usd": 87240.0,
+          "expected_incidents": 3.84,
+          "feasible": false,
+          "option": "Release on headline accuracy only",
+          "reviewer_hours": 24.0,
+          "risk_gate_pass": false,
+          "scenario_loss_usd": 76800.0,
+          "volume": 48
+        }
+      ],
+      "recommended_if_assumptions_hold": "Prespecified paired evaluation plan",
+      "risk_factor": 1,
+      "volume_factor": 2
+    },
+    {
+      "cost_factor": 0.75,
+      "options": [
+        {
+          "capacity_gate_pass": true,
+          "cash_outlay_usd": 174960.0,
+          "components": [
+            {
+              "activity": "Human labeling",
+              "cash_outlay_usd": 172800.0,
+              "economic_cost_usd": 172800.0,
+              "quantity": 192000,
+              "unit": "item"
+            },
+            {
+              "activity": "Inference",
+              "cash_outlay_usd": 2160.0,
+              "economic_cost_usd": 2160.0,
+              "quantity": 192000,
+              "unit": "item"
+            },
+            {
+              "activity": "Release review",
+              "cash_outlay_usd": 0.0,
+              "economic_cost_usd": 7200.0,
+              "quantity": 96.0,
+              "unit": "reviewer_hour"
+            }
+          ],
+          "economic_cost_usd": 201360.0,
+          "expected_incidents": 0.96,
+          "feasible": true,
+          "option": "Fixed large evaluation for every release",
+          "reviewer_hours": 96.0,
+          "risk_gate_pass": true,
+          "scenario_loss_usd": 19200.0,
+          "volume": 48
+        },
+        {
+          "capacity_gate_pass": true,
+          "cash_outlay_usd": 94704.0,
+          "components": [
+            {
+              "activity": "Human labeling",
+              "cash_outlay_usd": 77760.0,
+              "economic_cost_usd": 77760.0,
+              "quantity": 86400,
+              "unit": "item"
+            },
+            {
+              "activity": "Inference",
+              "cash_outlay_usd": 1944.0,
+              "economic_cost_usd": 1944.0,
+              "quantity": 86400,
+              "unit": "item"
+            },
+            {
+              "activity": "Design and release review",
+              "cash_outlay_usd": 0.0,
+              "economic_cost_usd": 14400.0,
+              "quantity": 192.0,
+              "unit": "reviewer_hour"
+            }
+          ],
+          "economic_cost_usd": 137904.0,
+          "expected_incidents": 1.44,
+          "feasible": false,
+          "option": "Prespecified paired evaluation plan",
+          "reviewer_hours": 192.0,
+          "risk_gate_pass": false,
+          "scenario_loss_usd": 28800.0,
+          "volume": 48
+        },
+        {
+          "capacity_gate_pass": true,
+          "cash_outlay_usd": 8640.0,
+          "components": [
+            {
+              "activity": "Human labeling",
+              "cash_outlay_usd": 8640.0,
+              "economic_cost_usd": 8640.0,
+              "quantity": 9600,
+              "unit": "item"
+            },
+            {
+              "activity": "Release review",
+              "cash_outlay_usd": 0.0,
+              "economic_cost_usd": 1800.0,
+              "quantity": 24.0,
+              "unit": "reviewer_hour"
+            }
+          ],
+          "economic_cost_usd": 164040.0,
+          "expected_incidents": 7.68,
+          "feasible": false,
+          "option": "Release on headline accuracy only",
+          "reviewer_hours": 24.0,
+          "risk_gate_pass": false,
+          "scenario_loss_usd": 153600.0,
+          "volume": 48
+        }
+      ],
+      "recommended_if_assumptions_hold": "Fixed large evaluation for every release",
+      "risk_factor": 2,
+      "volume_factor": 2
+    },
+    {
+      "cost_factor": 0.75,
+      "options": [
+        {
+          "capacity_gate_pass": true,
+          "cash_outlay_usd": 174960.0,
+          "components": [
+            {
+              "activity": "Human labeling",
+              "cash_outlay_usd": 172800.0,
+              "economic_cost_usd": 172800.0,
+              "quantity": 192000,
+              "unit": "item"
+            },
+            {
+              "activity": "Inference",
+              "cash_outlay_usd": 2160.0,
+              "economic_cost_usd": 2160.0,
+              "quantity": 192000,
+              "unit": "item"
+            },
+            {
+              "activity": "Release review",
+              "cash_outlay_usd": 0.0,
+              "economic_cost_usd": 7200.0,
+              "quantity": 96.0,
+              "unit": "reviewer_hour"
+            }
+          ],
+          "economic_cost_usd": 220560.0,
+          "expected_incidents": 1.92,
+          "feasible": false,
+          "option": "Fixed large evaluation for every release",
+          "reviewer_hours": 96.0,
+          "risk_gate_pass": false,
+          "scenario_loss_usd": 38400.0,
+          "volume": 48
+        },
+        {
+          "capacity_gate_pass": true,
+          "cash_outlay_usd": 94704.0,
+          "components": [
+            {
+              "activity": "Human labeling",
+              "cash_outlay_usd": 77760.0,
+              "economic_cost_usd": 77760.0,
+              "quantity": 86400,
+              "unit": "item"
+            },
+            {
+              "activity": "Inference",
+              "cash_outlay_usd": 1944.0,
+              "economic_cost_usd": 1944.0,
+              "quantity": 86400,
+              "unit": "item"
+            },
+            {
+              "activity": "Design and release review",
+              "cash_outlay_usd": 0.0,
+              "economic_cost_usd": 14400.0,
+              "quantity": 192.0,
+              "unit": "reviewer_hour"
+            }
+          ],
+          "economic_cost_usd": 166704.0,
+          "expected_incidents": 2.88,
+          "feasible": false,
+          "option": "Prespecified paired evaluation plan",
+          "reviewer_hours": 192.0,
+          "risk_gate_pass": false,
+          "scenario_loss_usd": 57600.0,
+          "volume": 48
+        },
+        {
+          "capacity_gate_pass": true,
+          "cash_outlay_usd": 8640.0,
+          "components": [
+            {
+              "activity": "Human labeling",
+              "cash_outlay_usd": 8640.0,
+              "economic_cost_usd": 8640.0,
+              "quantity": 9600,
+              "unit": "item"
+            },
+            {
+              "activity": "Release review",
+              "cash_outlay_usd": 0.0,
+              "economic_cost_usd": 1800.0,
+              "quantity": 24.0,
+              "unit": "reviewer_hour"
+            }
+          ],
+          "economic_cost_usd": 317640.0,
+          "expected_incidents": 15.36,
+          "feasible": false,
+          "option": "Release on headline accuracy only",
+          "reviewer_hours": 24.0,
+          "risk_gate_pass": false,
+          "scenario_loss_usd": 307200.0,
+          "volume": 48
+        }
+      ],
+      "recommended_if_assumptions_hold": null,
+      "risk_factor": 4,
+      "volume_factor": 2
+    },
+    {
+      "cost_factor": 1,
+      "options": [
+        {
+          "capacity_gate_pass": true,
+          "cash_outlay_usd": 233280.0,
+          "components": [
+            {
+              "activity": "Human labeling",
+              "cash_outlay_usd": 230400.0,
+              "economic_cost_usd": 230400.0,
+              "quantity": 192000,
+              "unit": "item"
+            },
+            {
+              "activity": "Inference",
+              "cash_outlay_usd": 2880.0,
+              "economic_cost_usd": 2880.0,
+              "quantity": 192000,
+              "unit": "item"
+            },
+            {
+              "activity": "Release review",
+              "cash_outlay_usd": 0.0,
+              "economic_cost_usd": 9600.0,
+              "quantity": 96.0,
+              "unit": "reviewer_hour"
+            }
+          ],
+          "economic_cost_usd": 252480.0,
+          "expected_incidents": 0.48,
+          "feasible": true,
+          "option": "Fixed large evaluation for every release",
+          "reviewer_hours": 96.0,
+          "risk_gate_pass": true,
+          "scenario_loss_usd": 9600.0,
+          "volume": 48
+        },
+        {
+          "capacity_gate_pass": true,
+          "cash_outlay_usd": 121272.0,
+          "components": [
+            {
+              "activity": "Human labeling",
+              "cash_outlay_usd": 103680.0,
+              "economic_cost_usd": 103680.0,
+              "quantity": 86400,
+              "unit": "item"
+            },
+            {
+              "activity": "Inference",
+              "cash_outlay_usd": 2592.0,
+              "economic_cost_usd": 2592.0,
+              "quantity": 86400,
+              "unit": "item"
+            },
+            {
+              "activity": "Design and release review",
+              "cash_outlay_usd": 0.0,
+              "economic_cost_usd": 19200.0,
+              "quantity": 192.0,
+              "unit": "reviewer_hour"
+            }
+          ],
+          "economic_cost_usd": 154872.0,
+          "expected_incidents": 0.72,
+          "feasible": true,
+          "option": "Prespecified paired evaluation plan",
+          "reviewer_hours": 192.0,
+          "risk_gate_pass": true,
+          "scenario_loss_usd": 14400.0,
+          "volume": 48
+        },
+        {
+          "capacity_gate_pass": true,
+          "cash_outlay_usd": 11520.0,
+          "components": [
+            {
+              "activity": "Human labeling",
+              "cash_outlay_usd": 11520.0,
+              "economic_cost_usd": 11520.0,
+              "quantity": 9600,
+              "unit": "item"
+            },
+            {
+              "activity": "Release review",
+              "cash_outlay_usd": 0.0,
+              "economic_cost_usd": 2400.0,
+              "quantity": 24.0,
+              "unit": "reviewer_hour"
+            }
+          ],
+          "economic_cost_usd": 90720.0,
+          "expected_incidents": 3.84,
+          "feasible": false,
+          "option": "Release on headline accuracy only",
+          "reviewer_hours": 24.0,
+          "risk_gate_pass": false,
+          "scenario_loss_usd": 76800.0,
+          "volume": 48
+        }
+      ],
+      "recommended_if_assumptions_hold": "Prespecified paired evaluation plan",
+      "risk_factor": 1,
+      "volume_factor": 2
+    },
+    {
+      "cost_factor": 1,
+      "options": [
+        {
+          "capacity_gate_pass": true,
+          "cash_outlay_usd": 233280.0,
+          "components": [
+            {
+              "activity": "Human labeling",
+              "cash_outlay_usd": 230400.0,
+              "economic_cost_usd": 230400.0,
+              "quantity": 192000,
+              "unit": "item"
+            },
+            {
+              "activity": "Inference",
+              "cash_outlay_usd": 2880.0,
+              "economic_cost_usd": 2880.0,
+              "quantity": 192000,
+              "unit": "item"
+            },
+            {
+              "activity": "Release review",
+              "cash_outlay_usd": 0.0,
+              "economic_cost_usd": 9600.0,
+              "quantity": 96.0,
+              "unit": "reviewer_hour"
+            }
+          ],
+          "economic_cost_usd": 262080.0,
+          "expected_incidents": 0.96,
+          "feasible": true,
+          "option": "Fixed large evaluation for every release",
+          "reviewer_hours": 96.0,
+          "risk_gate_pass": true,
+          "scenario_loss_usd": 19200.0,
+          "volume": 48
+        },
+        {
+          "capacity_gate_pass": true,
+          "cash_outlay_usd": 121272.0,
+          "components": [
+            {
+              "activity": "Human labeling",
+              "cash_outlay_usd": 103680.0,
+              "economic_cost_usd": 103680.0,
+              "quantity": 86400,
+              "unit": "item"
+            },
+            {
+              "activity": "Inference",
+              "cash_outlay_usd": 2592.0,
+              "economic_cost_usd": 2592.0,
+              "quantity": 86400,
+              "unit": "item"
+            },
+            {
+              "activity": "Design and release review",
+              "cash_outlay_usd": 0.0,
+              "economic_cost_usd": 19200.0,
+              "quantity": 192.0,
+              "unit": "reviewer_hour"
+            }
+          ],
+          "economic_cost_usd": 169272.0,
+          "expected_incidents": 1.44,
+          "feasible": false,
+          "option": "Prespecified paired evaluation plan",
+          "reviewer_hours": 192.0,
+          "risk_gate_pass": false,
+          "scenario_loss_usd": 28800.0,
+          "volume": 48
+        },
+        {
+          "capacity_gate_pass": true,
+          "cash_outlay_usd": 11520.0,
+          "components": [
+            {
+              "activity": "Human labeling",
+              "cash_outlay_usd": 11520.0,
+              "economic_cost_usd": 11520.0,
+              "quantity": 9600,
+              "unit": "item"
+            },
+            {
+              "activity": "Release review",
+              "cash_outlay_usd": 0.0,
+              "economic_cost_usd": 2400.0,
+              "quantity": 24.0,
+              "unit": "reviewer_hour"
+            }
+          ],
+          "economic_cost_usd": 167520.0,
+          "expected_incidents": 7.68,
+          "feasible": false,
+          "option": "Release on headline accuracy only",
+          "reviewer_hours": 24.0,
+          "risk_gate_pass": false,
+          "scenario_loss_usd": 153600.0,
+          "volume": 48
+        }
+      ],
+      "recommended_if_assumptions_hold": "Fixed large evaluation for every release",
+      "risk_factor": 2,
+      "volume_factor": 2
+    },
+    {
+      "cost_factor": 1,
+      "options": [
+        {
+          "capacity_gate_pass": true,
+          "cash_outlay_usd": 233280.0,
+          "components": [
+            {
+              "activity": "Human labeling",
+              "cash_outlay_usd": 230400.0,
+              "economic_cost_usd": 230400.0,
+              "quantity": 192000,
+              "unit": "item"
+            },
+            {
+              "activity": "Inference",
+              "cash_outlay_usd": 2880.0,
+              "economic_cost_usd": 2880.0,
+              "quantity": 192000,
+              "unit": "item"
+            },
+            {
+              "activity": "Release review",
+              "cash_outlay_usd": 0.0,
+              "economic_cost_usd": 9600.0,
+              "quantity": 96.0,
+              "unit": "reviewer_hour"
+            }
+          ],
+          "economic_cost_usd": 281280.0,
+          "expected_incidents": 1.92,
+          "feasible": false,
+          "option": "Fixed large evaluation for every release",
+          "reviewer_hours": 96.0,
+          "risk_gate_pass": false,
+          "scenario_loss_usd": 38400.0,
+          "volume": 48
+        },
+        {
+          "capacity_gate_pass": true,
+          "cash_outlay_usd": 121272.0,
+          "components": [
+            {
+              "activity": "Human labeling",
+              "cash_outlay_usd": 103680.0,
+              "economic_cost_usd": 103680.0,
+              "quantity": 86400,
+              "unit": "item"
+            },
+            {
+              "activity": "Inference",
+              "cash_outlay_usd": 2592.0,
+              "economic_cost_usd": 2592.0,
+              "quantity": 86400,
+              "unit": "item"
+            },
+            {
+              "activity": "Design and release review",
+              "cash_outlay_usd": 0.0,
+              "economic_cost_usd": 19200.0,
+              "quantity": 192.0,
+              "unit": "reviewer_hour"
+            }
+          ],
+          "economic_cost_usd": 198072.0,
+          "expected_incidents": 2.88,
+          "feasible": false,
+          "option": "Prespecified paired evaluation plan",
+          "reviewer_hours": 192.0,
+          "risk_gate_pass": false,
+          "scenario_loss_usd": 57600.0,
+          "volume": 48
+        },
+        {
+          "capacity_gate_pass": true,
+          "cash_outlay_usd": 11520.0,
+          "components": [
+            {
+              "activity": "Human labeling",
+              "cash_outlay_usd": 11520.0,
+              "economic_cost_usd": 11520.0,
+              "quantity": 9600,
+              "unit": "item"
+            },
+            {
+              "activity": "Release review",
+              "cash_outlay_usd": 0.0,
+              "economic_cost_usd": 2400.0,
+              "quantity": 24.0,
+              "unit": "reviewer_hour"
+            }
+          ],
+          "economic_cost_usd": 321120.0,
+          "expected_incidents": 15.36,
+          "feasible": false,
+          "option": "Release on headline accuracy only",
+          "reviewer_hours": 24.0,
+          "risk_gate_pass": false,
+          "scenario_loss_usd": 307200.0,
+          "volume": 48
+        }
+      ],
+      "recommended_if_assumptions_hold": null,
+      "risk_factor": 4,
+      "volume_factor": 2
+    },
+    {
+      "cost_factor": 1.5,
+      "options": [
+        {
+          "capacity_gate_pass": true,
+          "cash_outlay_usd": 349920.0,
+          "components": [
+            {
+              "activity": "Human labeling",
+              "cash_outlay_usd": 345600.0,
+              "economic_cost_usd": 345600.0,
+              "quantity": 192000,
+              "unit": "item"
+            },
+            {
+              "activity": "Inference",
+              "cash_outlay_usd": 4320.0,
+              "economic_cost_usd": 4320.0,
+              "quantity": 192000,
+              "unit": "item"
+            },
+            {
+              "activity": "Release review",
+              "cash_outlay_usd": 0.0,
+              "economic_cost_usd": 14400.0,
+              "quantity": 96.0,
+              "unit": "reviewer_hour"
+            }
+          ],
+          "economic_cost_usd": 373920.0,
+          "expected_incidents": 0.48,
+          "feasible": true,
+          "option": "Fixed large evaluation for every release",
+          "reviewer_hours": 96.0,
+          "risk_gate_pass": true,
+          "scenario_loss_usd": 9600.0,
+          "volume": 48
+        },
+        {
+          "capacity_gate_pass": true,
+          "cash_outlay_usd": 174408.0,
+          "components": [
+            {
+              "activity": "Human labeling",
+              "cash_outlay_usd": 155520.0,
+              "economic_cost_usd": 155520.0,
+              "quantity": 86400,
+              "unit": "item"
+            },
+            {
+              "activity": "Inference",
+              "cash_outlay_usd": 3888.0,
+              "economic_cost_usd": 3888.0,
+              "quantity": 86400,
+              "unit": "item"
+            },
+            {
+              "activity": "Design and release review",
+              "cash_outlay_usd": 0.0,
+              "economic_cost_usd": 28800.0,
+              "quantity": 192.0,
+              "unit": "reviewer_hour"
+            }
+          ],
+          "economic_cost_usd": 217608.0,
+          "expected_incidents": 0.72,
+          "feasible": true,
+          "option": "Prespecified paired evaluation plan",
+          "reviewer_hours": 192.0,
+          "risk_gate_pass": true,
+          "scenario_loss_usd": 14400.0,
+          "volume": 48
+        },
+        {
+          "capacity_gate_pass": true,
+          "cash_outlay_usd": 17280.0,
+          "components": [
+            {
+              "activity": "Human labeling",
+              "cash_outlay_usd": 17280.0,
+              "economic_cost_usd": 17280.0,
+              "quantity": 9600,
+              "unit": "item"
+            },
+            {
+              "activity": "Release review",
+              "cash_outlay_usd": 0.0,
+              "economic_cost_usd": 3600.0,
+              "quantity": 24.0,
+              "unit": "reviewer_hour"
+            }
+          ],
+          "economic_cost_usd": 97680.0,
+          "expected_incidents": 3.84,
+          "feasible": false,
+          "option": "Release on headline accuracy only",
+          "reviewer_hours": 24.0,
+          "risk_gate_pass": false,
+          "scenario_loss_usd": 76800.0,
+          "volume": 48
+        }
+      ],
+      "recommended_if_assumptions_hold": "Prespecified paired evaluation plan",
+      "risk_factor": 1,
+      "volume_factor": 2
+    },
+    {
+      "cost_factor": 1.5,
+      "options": [
+        {
+          "capacity_gate_pass": true,
+          "cash_outlay_usd": 349920.0,
+          "components": [
+            {
+              "activity": "Human labeling",
+              "cash_outlay_usd": 345600.0,
+              "economic_cost_usd": 345600.0,
+              "quantity": 192000,
+              "unit": "item"
+            },
+            {
+              "activity": "Inference",
+              "cash_outlay_usd": 4320.0,
+              "economic_cost_usd": 4320.0,
+              "quantity": 192000,
+              "unit": "item"
+            },
+            {
+              "activity": "Release review",
+              "cash_outlay_usd": 0.0,
+              "economic_cost_usd": 14400.0,
+              "quantity": 96.0,
+              "unit": "reviewer_hour"
+            }
+          ],
+          "economic_cost_usd": 383520.0,
+          "expected_incidents": 0.96,
+          "feasible": true,
+          "option": "Fixed large evaluation for every release",
+          "reviewer_hours": 96.0,
+          "risk_gate_pass": true,
+          "scenario_loss_usd": 19200.0,
+          "volume": 48
+        },
+        {
+          "capacity_gate_pass": true,
+          "cash_outlay_usd": 174408.0,
+          "components": [
+            {
+              "activity": "Human labeling",
+              "cash_outlay_usd": 155520.0,
+              "economic_cost_usd": 155520.0,
+              "quantity": 86400,
+              "unit": "item"
+            },
+            {
+              "activity": "Inference",
+              "cash_outlay_usd": 3888.0,
+              "economic_cost_usd": 3888.0,
+              "quantity": 86400,
+              "unit": "item"
+            },
+            {
+              "activity": "Design and release review",
+              "cash_outlay_usd": 0.0,
+              "economic_cost_usd": 28800.0,
+              "quantity": 192.0,
+              "unit": "reviewer_hour"
+            }
+          ],
+          "economic_cost_usd": 232008.0,
+          "expected_incidents": 1.44,
+          "feasible": false,
+          "option": "Prespecified paired evaluation plan",
+          "reviewer_hours": 192.0,
+          "risk_gate_pass": false,
+          "scenario_loss_usd": 28800.0,
+          "volume": 48
+        },
+        {
+          "capacity_gate_pass": true,
+          "cash_outlay_usd": 17280.0,
+          "components": [
+            {
+              "activity": "Human labeling",
+              "cash_outlay_usd": 17280.0,
+              "economic_cost_usd": 17280.0,
+              "quantity": 9600,
+              "unit": "item"
+            },
+            {
+              "activity": "Release review",
+              "cash_outlay_usd": 0.0,
+              "economic_cost_usd": 3600.0,
+              "quantity": 24.0,
+              "unit": "reviewer_hour"
+            }
+          ],
+          "economic_cost_usd": 174480.0,
+          "expected_incidents": 7.68,
+          "feasible": false,
+          "option": "Release on headline accuracy only",
+          "reviewer_hours": 24.0,
+          "risk_gate_pass": false,
+          "scenario_loss_usd": 153600.0,
+          "volume": 48
+        }
+      ],
+      "recommended_if_assumptions_hold": "Fixed large evaluation for every release",
+      "risk_factor": 2,
+      "volume_factor": 2
+    },
+    {
+      "cost_factor": 1.5,
+      "options": [
+        {
+          "capacity_gate_pass": true,
+          "cash_outlay_usd": 349920.0,
+          "components": [
+            {
+              "activity": "Human labeling",
+              "cash_outlay_usd": 345600.0,
+              "economic_cost_usd": 345600.0,
+              "quantity": 192000,
+              "unit": "item"
+            },
+            {
+              "activity": "Inference",
+              "cash_outlay_usd": 4320.0,
+              "economic_cost_usd": 4320.0,
+              "quantity": 192000,
+              "unit": "item"
+            },
+            {
+              "activity": "Release review",
+              "cash_outlay_usd": 0.0,
+              "economic_cost_usd": 14400.0,
+              "quantity": 96.0,
+              "unit": "reviewer_hour"
+            }
+          ],
+          "economic_cost_usd": 402720.0,
+          "expected_incidents": 1.92,
+          "feasible": false,
+          "option": "Fixed large evaluation for every release",
+          "reviewer_hours": 96.0,
+          "risk_gate_pass": false,
+          "scenario_loss_usd": 38400.0,
+          "volume": 48
+        },
+        {
+          "capacity_gate_pass": true,
+          "cash_outlay_usd": 174408.0,
+          "components": [
+            {
+              "activity": "Human labeling",
+              "cash_outlay_usd": 155520.0,
+              "economic_cost_usd": 155520.0,
+              "quantity": 86400,
+              "unit": "item"
+            },
+            {
+              "activity": "Inference",
+              "cash_outlay_usd": 3888.0,
+              "economic_cost_usd": 3888.0,
+              "quantity": 86400,
+              "unit": "item"
+            },
+            {
+              "activity": "Design and release review",
+              "cash_outlay_usd": 0.0,
+              "economic_cost_usd": 28800.0,
+              "quantity": 192.0,
+              "unit": "reviewer_hour"
+            }
+          ],
+          "economic_cost_usd": 260808.0,
+          "expected_incidents": 2.88,
+          "feasible": false,
+          "option": "Prespecified paired evaluation plan",
+          "reviewer_hours": 192.0,
+          "risk_gate_pass": false,
+          "scenario_loss_usd": 57600.0,
+          "volume": 48
+        },
+        {
+          "capacity_gate_pass": true,
+          "cash_outlay_usd": 17280.0,
+          "components": [
+            {
+              "activity": "Human labeling",
+              "cash_outlay_usd": 17280.0,
+              "economic_cost_usd": 17280.0,
+              "quantity": 9600,
+              "unit": "item"
+            },
+            {
+              "activity": "Release review",
+              "cash_outlay_usd": 0.0,
+              "economic_cost_usd": 3600.0,
+              "quantity": 24.0,
+              "unit": "reviewer_hour"
+            }
+          ],
+          "economic_cost_usd": 328080.0,
+          "expected_incidents": 15.36,
+          "feasible": false,
+          "option": "Release on headline accuracy only",
+          "reviewer_hours": 24.0,
+          "risk_gate_pass": false,
+          "scenario_loss_usd": 307200.0,
+          "volume": 48
+        }
+      ],
+      "recommended_if_assumptions_hold": null,
+      "risk_factor": 4,
+      "volume_factor": 2
+    }
+  ]
+}

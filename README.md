@@ -1,5 +1,7 @@
 # Can you tell when a model got worse?
 
+**Decision study:** [Executive recommendation](analysis/output/decision_lab/executive-summary.md) · [Cost, cohort and experiment methods](analysis/README.md#decision-laboratory). Behavioral results are synthetic QA; economics are explicit planning assumptions.
+
 > **Validation update (2026-10-10):** An exact paired binomial test is now separate from planning power. Eight wins and zero losses can be significant even on a small benchmark. See the [current decision brief](docs/decision-brief.md) and [reproducible analysis](analysis/README.md). Historical evidence and figures retain their original run context; this update supersedes conflicting claims below.
 
 

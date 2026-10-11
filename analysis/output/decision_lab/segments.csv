@@ -1,0 +1,5 @@
+segment,arm,assigned,activated,activation_itt,incidents,incident_itt
+frequent_release_team,control,640,323,0.5046875,0,0.0
+frequent_release_team,treatment,640,400,0.625,1,0.0015625
+sparse_release_team,control,640,219,0.3421875,1,0.0015625
+sparse_release_team,treatment,640,192,0.3,19,0.0296875

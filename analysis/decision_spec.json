@@ -1,0 +1,141 @@
+{
+  "project": "evaldrift",
+  "title": "Allocate evaluation spend to decisions that need more paired evidence",
+  "decision_owner": "Model release owner",
+  "observed_evidence": "The paired example with eight wins and zero losses has exact two-sided p=.0078125. Planning MDE alone cannot invalidate an observed paired result.",
+  "executive_recommendation": "Use a prespecified paired evaluation plan matched to the smallest meaningful release effect. Budget labeling and decision review separately; never reinterpret planning power as a significance test.",
+  "priorities": [
+    "Record the prespecified effect, paired outcomes and missing-item policy before evaluation.",
+    "Spend labels where the decision remains unresolved rather than maximizing one universal benchmark size.",
+    "Require a fixed stopping rule and confirmatory analysis after exploratory comparisons."
+  ],
+  "reversal": "A smaller paired design is not economical when labeling costs fall or its false-release rate breaches the gate; increase evidence or hold the release.",
+  "uncertainty": "The scenario error rates are not inferred from the eight-win illustration. Required item count depends on pairing and disagreement structure.",
+  "economics": {
+    "evidence_status": "ILLUSTRATIVE ASSUMPTIONS, NOT MEASURED COSTS OR RISK",
+    "period": "one planning year",
+    "volume": 24,
+    "review_capacity_hours": 500,
+    "loss_per_incident_usd": 20000,
+    "max_incident_rate": 0.02,
+    "options": [
+      {
+        "name": "Fixed large evaluation for every release",
+        "fixed_usd": 0,
+        "incident_rate": 0.01,
+        "activities": [
+          {
+            "name": "Human labeling",
+            "unit": "item",
+            "units_per_case": 4000,
+            "usd_per_unit": 1.2,
+            "cash": true
+          },
+          {
+            "name": "Inference",
+            "unit": "item",
+            "units_per_case": 4000,
+            "usd_per_unit": 0.015,
+            "cash": true
+          },
+          {
+            "name": "Release review",
+            "unit": "reviewer_hour",
+            "units_per_case": 2.0,
+            "usd_per_unit": 100,
+            "cash": false
+          }
+        ]
+      },
+      {
+        "name": "Prespecified paired evaluation plan",
+        "fixed_usd": 15000,
+        "incident_rate": 0.015,
+        "activities": [
+          {
+            "name": "Human labeling",
+            "unit": "item",
+            "units_per_case": 1800,
+            "usd_per_unit": 1.2,
+            "cash": true
+          },
+          {
+            "name": "Inference",
+            "unit": "item",
+            "units_per_case": 1800,
+            "usd_per_unit": 0.03,
+            "cash": true
+          },
+          {
+            "name": "Design and release review",
+            "unit": "reviewer_hour",
+            "units_per_case": 4.0,
+            "usd_per_unit": 100,
+            "cash": false
+          }
+        ]
+      },
+      {
+        "name": "Release on headline accuracy only",
+        "fixed_usd": 0,
+        "incident_rate": 0.08,
+        "activities": [
+          {
+            "name": "Human labeling",
+            "unit": "item",
+            "units_per_case": 200,
+            "usd_per_unit": 1.2,
+            "cash": true
+          },
+          {
+            "name": "Release review",
+            "unit": "reviewer_hour",
+            "units_per_case": 0.5,
+            "usd_per_unit": 100,
+            "cash": false
+          }
+        ]
+      }
+    ]
+  },
+  "product": {
+    "seed": 734,
+    "randomization_unit": "release team (not individual evaluation items)",
+    "stages": [
+      "comparison_created",
+      "paired_plan_completed",
+      "decision_memo_saved"
+    ],
+    "incident_definition": "release recommendation contradicting the prespecified test",
+    "retention_interpretation": "team creates another eligible release comparison",
+    "observation_day": 56,
+    "minimum_activation_lift": 0.02,
+    "maximum_incident_increase": 0.005,
+    "planning_baseline": 0.45,
+    "minimum_detectable_effect": 0.05,
+    "segments": [
+      {
+        "name": "frequent_release_team",
+        "start_probability": 0.9,
+        "control_activation": 0.64,
+        "treatment_delta": 0.14,
+        "apply_probability": 0.88,
+        "control_incident": 0.004,
+        "treatment_incident": 0.004,
+        "return7": 0.55,
+        "return28": 0.35
+      },
+      {
+        "name": "sparse_release_team",
+        "start_probability": 0.8200000000000001,
+        "control_activation": 0.52,
+        "treatment_delta": -0.05,
+        "apply_probability": 0.8,
+        "control_incident": 0.01,
+        "treatment_incident": 0.064,
+        "return7": 0.43000000000000005,
+        "return28": 0.24999999999999997
+      }
+    ]
+  }
+}
